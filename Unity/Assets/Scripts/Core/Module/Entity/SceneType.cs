@@ -19,6 +19,7 @@ namespace ET
 		BenchmarkClient = 1 << 11,
 		BenchmarkServer = 1 << 12,
 		Benchmark = 1 << 13,
+		Battle = 1 << 14,
 
 		// 客户端Model层
 		Client = 1 << 30,
