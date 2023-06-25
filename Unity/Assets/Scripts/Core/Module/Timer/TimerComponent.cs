@@ -81,6 +81,7 @@ namespace ET
             return TimeHelper.ClientFrameTime();
         }
 
+        
         public void Update()
         {
             if (this.TimeId.Count == 0)

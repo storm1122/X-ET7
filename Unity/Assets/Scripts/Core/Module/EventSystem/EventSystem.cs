@@ -66,7 +66,7 @@ namespace ET
         }
     }
     
-    public class EventSystem: Singleton<EventSystem>, ISingletonUpdate, ISingletonLateUpdate
+    public class EventSystem: Singleton<EventSystem>, ISingletonUpdate, ISingletonLateUpdate, ISingletonTick
     {
         private class EventInfo
         {
@@ -513,6 +513,46 @@ namespace ET
                 catch (Exception e)
                 {
                     Log.Error(e);
+                }
+            }
+        }
+        
+        public void Tick()
+        {
+            Queue<long> queue = this.queues[InstanceQueueIndex.Tick];
+            int count = queue.Count;
+            while (count-- > 0)
+            {
+                long instanceId = queue.Dequeue();
+                Entity component = Root.Instance.Get(instanceId);
+                if (component == null)
+                {
+                    continue;
+                }
+
+                if (component.IsDisposed)
+                {
+                    continue;
+                }
+
+                List<object> iTickSystems = this.typeSystems.GetSystems(component.GetType(), typeof (ITickSystem));
+                if (iTickSystems == null)
+                {
+                    continue;
+                }
+
+                queue.Enqueue(instanceId);
+
+                foreach (ITickSystem iTickSystem in iTickSystems)
+                {
+                    try
+                    {
+                        iTickSystem.Run(component);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.Error(e);
+                    }
                 }
             }
         }

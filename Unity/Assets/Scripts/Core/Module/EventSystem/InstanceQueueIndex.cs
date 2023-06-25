@@ -6,6 +6,7 @@
         public const int Update = 0;
         public const int LateUpdate = 1;
         public const int Load = 2;
-        public const int Max = 3;
+        public const int Tick = 3;
+        public const int Max = 4;
     }
 }
