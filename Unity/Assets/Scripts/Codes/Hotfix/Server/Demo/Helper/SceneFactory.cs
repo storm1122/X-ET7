@@ -48,8 +48,6 @@ namespace ET.Server
                 case SceneType.BenchmarkClient:
                     scene.AddComponent<BenchmarkClientComponent>();
                     break;
-                case SceneType.Battle:
-                    break;
             }
 
             return scene;

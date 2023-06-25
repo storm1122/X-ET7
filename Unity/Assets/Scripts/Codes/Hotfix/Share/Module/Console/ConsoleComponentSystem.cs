@@ -17,6 +17,12 @@ namespace ET
                 self.Load();
             
                 self.Start().Coroutine();
+
+                if (ConstValue.RobotBattleCase)
+                {
+                    EventSystem.Instance.Invoke<Server.RobotInvokeArgs, ETTask>(Server.RobotCaseType.BattleCase,
+                        new Server.RobotInvokeArgs() { Content = $"Run {Server.RobotCaseType.BattleCase}" }).Coroutine();
+                }
             }
         }
 
