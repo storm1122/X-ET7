@@ -37,8 +37,9 @@ namespace ET.Client
 
 		private static async ETTask EnterMap(this LobbyPanel self)
 		{
-			await EnterMapHelper.EnterMapAsync(self.ClientScene());
+			// await EnterMapHelper.EnterMapAsync(self.ClientScene());
 			self.ClientScene().GetComponent<FUIComponent>().HidePanel(PanelId.LobbyPanel);
+			await ETTask.CompletedTask;
 		}
 	}
 }

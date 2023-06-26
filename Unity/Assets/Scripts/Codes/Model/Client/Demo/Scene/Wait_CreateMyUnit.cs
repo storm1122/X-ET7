@@ -8,6 +8,5 @@
             set;
         }
 
-        public M2C_CreateMyUnit Message;
     }
 }

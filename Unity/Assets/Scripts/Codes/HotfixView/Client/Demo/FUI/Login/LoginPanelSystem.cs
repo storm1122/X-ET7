@@ -33,7 +33,8 @@ namespace ET.Client
 
 		private static async ETTask Login(this LoginPanel self)
 		{
-			await LoginHelper.Login(self.DomainScene(), self.FUILoginPanel.AccountInput.Input.text, self.FUILoginPanel.PasswordInput.Input.text);
+			await ETTask.CompletedTask;
+			// await LoginHelper.Login(self.DomainScene(), self.FUILoginPanel.AccountInput.Input.text, self.FUILoginPanel.PasswordInput.Input.text);
 		}
 	}
 }

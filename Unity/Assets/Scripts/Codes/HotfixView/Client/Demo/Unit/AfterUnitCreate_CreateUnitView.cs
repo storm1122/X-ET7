@@ -12,7 +12,7 @@ namespace ET.Client
             GameObject prefab = await ResComponent.Instance.LoadAssetAsync<GameObject>("Skeleton");
 	        
             GameObject go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.Unit, true);
-            go.transform.position = unit.Position;
+            // go.transform.position = unit.Position;
             unit.AddComponent<GameObjectComponent>().GameObject = go;
             unit.AddComponent<AnimatorComponent>();
             await ETTask.CompletedTask;
