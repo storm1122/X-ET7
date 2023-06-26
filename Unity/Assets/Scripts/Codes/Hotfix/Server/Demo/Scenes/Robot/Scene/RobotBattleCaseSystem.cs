@@ -14,9 +14,9 @@ namespace ET.Server
             
             clientScene = await Client.SceneFactory.CreateClientScene(zone, $"Robot_{zone}");
 
-            var cfg = StartSceneConfigCategory.Instance.Get(7);
-
-            await Client.SceneChangeHelper.SceneChangeTo(clientScene, cfg.Name, clientScene.Id + 1);
+            var uid = IdGenerater.Instance.GenerateInstanceId();
+            
+            await Client.SceneChangeHelper.SceneChangeTo(clientScene, ConstValue.BattleSceneName, uid);
             
             self.Scenes.Add(clientScene.Id);
             

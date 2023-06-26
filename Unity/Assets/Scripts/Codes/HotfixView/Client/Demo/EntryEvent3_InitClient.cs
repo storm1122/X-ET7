@@ -117,11 +117,15 @@ namespace ET.Client
         {
             fuiComponent.Restart();
             
-            // 打开登陆界面
-            LoginPanel_ContextData contextData = fuiComponent.AddChild<LoginPanel_ContextData>();
-            contextData.Data = "界面参数测试";
-            // 显示登录界面, 并传递参数contextData
-            await fuiComponent.ShowPanelAsync(PanelId.LoginPanel, contextData);
+            var uid = IdGenerater.Instance.GenerateInstanceId();
+
+            await Client.SceneChangeHelper.SceneChangeTo(fuiComponent.ClientScene(), ConstValue.BattleSceneName, uid);
+            
+            // // 打开登陆界面
+            // LoginPanel_ContextData contextData = fuiComponent.AddChild<LoginPanel_ContextData>();
+            // contextData.Data = "界面参数测试";
+            // // 显示登录界面, 并传递参数contextData
+            // await fuiComponent.ShowPanelAsync(PanelId.LoginPanel, contextData);
         }
     }
 }

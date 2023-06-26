@@ -7,5 +7,7 @@ namespace ET
         public const int SessionTimeoutTime = 30 * 1000;
 
         public const bool RobotBattleCase = true;
+
+        public const string BattleSceneName = "Battle";
     }
 }
