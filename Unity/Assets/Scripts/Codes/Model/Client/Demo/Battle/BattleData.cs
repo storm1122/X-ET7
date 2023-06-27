@@ -9,17 +9,17 @@ namespace ET.Client
         public FP Width = 40;
         public FP Height = 80;
 
-        public int CurPath = 0;
+        public int CurPathIdx = 0;
 
-        public List<TSVector2> Path = new List<TSVector2>()
+        public List<TSVector> Path = new List<TSVector>()
         {
-            new TSVector2(0, -40),
-            new TSVector2(0, -40 / 2),
-            new TSVector2(0, 0),
-            new TSVector2(0, 40 / 2),
-            new TSVector2(0, 40),
+            new TSVector(20, 0, -40),
+            new TSVector(0, 0, -40 / 2),
+            new TSVector(20, 0, 0),
+            new TSVector(0, 0, 40 / 2),
+            new TSVector(20, 0, 40),
         };
-        
+
     }
     
 }

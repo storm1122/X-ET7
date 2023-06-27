@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using ET.Client;
+using TrueSync;
 using Unity.Mathematics;
 
 namespace ET
 {
-    [ComponentOf(typeof(Unit))]
+    [ComponentOf]
     public class MoveComponent: Entity, IAwake, IDestroy
     {
-        public float3 PreTarget
+        public TSVector PreTarget
         {
             get
             {
@@ -15,7 +17,7 @@ namespace ET
             }
         }
 
-        public float3 NextTarget
+        public TSVector NextTarget
         {
             get
             {
@@ -30,9 +32,9 @@ namespace ET
         public long StartTime { get; set; }
 
         // 开启移动协程的Unit的位置
-        public float3 StartPos;
+        public TSVector StartPos;
 
-        public float3 RealPos
+        public TSVector RealPos
         {
             get
             {
@@ -56,13 +58,13 @@ namespace ET
 
         public long MoveTimer;
 
-        public float Speed; // m/s
+        public FP Speed; // m/s
 
         public ETTask<bool> tcs;
 
-        public List<float3> Targets = new List<float3>();
+        public List<TSVector> Targets = new List<TSVector>();
 
-        public float3 FinalTarget
+        public TSVector FinalTarget
         {
             get
             {
@@ -76,8 +78,8 @@ namespace ET
 
         public bool IsTurnHorizontal;
 
-        public quaternion From;
+        public TSQuaternion From;
 
-        public quaternion To;
+        public TSQuaternion To;
     }
 }

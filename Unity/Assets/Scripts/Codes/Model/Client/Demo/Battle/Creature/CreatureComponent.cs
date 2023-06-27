@@ -1,7 +1,7 @@
 ﻿namespace ET.Client
 {
     [ComponentOf(typeof(Scene))]
-    public class FootHoldComponent : Entity , IAwake
+    public class CreatureComponent : Entity, IAwake, IDestroy
     {
         
     }

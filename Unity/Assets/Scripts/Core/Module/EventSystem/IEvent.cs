@@ -6,6 +6,12 @@ namespace ET
 	{
 		Type Type { get; }
 	}
+
+
+	public interface IBattleEvt
+	{
+		
+	}
 	
 	public abstract class AEvent<S, A>: IEvent where S: class, IScene where A: struct
 	{

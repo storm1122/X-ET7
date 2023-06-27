@@ -21,6 +21,8 @@ namespace ET.Server
             self.Scenes.Add(clientScene.Id);
             
             scenes.Add(clientScene);
+
+            await TimerComponent.Instance.WaitAsync(99999999);
         }
     }
 }

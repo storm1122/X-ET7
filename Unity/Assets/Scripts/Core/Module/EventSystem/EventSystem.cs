@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MongoDB.Bson;
 
 namespace ET
 {
@@ -675,6 +676,11 @@ namespace ET
 
         public void Publish<S, T>(S scene, T a) where S: class, IScene where T : struct
         {
+            if (a is IBattleEvt)
+            {
+                Log.Console($"{a.ToString().Replace("ET.Client.BattleEvent.", "")} : {a.ToJson()}");
+            }
+            
             List<EventInfo> iEvents;
             if (!this.allEvents.TryGetValue(typeof (T), out iEvents))
             {
