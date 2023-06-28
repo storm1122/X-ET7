@@ -33,7 +33,16 @@ namespace ET.Client
             {
                 int cfgId = 1;
                 var footHold = footHoldComponent.AddChildWithId<FootHold, int>(idx, cfgId);
+                
                 footHold.Pos = pos;
+
+                var spawnComponent = footHold.AddChild<SpawnComponent, int>(cfgId);
+
+                if (idx == 0)
+                {
+                    spawnComponent.WaitSpawn();
+                }
+                
                 idx++;
             }
 

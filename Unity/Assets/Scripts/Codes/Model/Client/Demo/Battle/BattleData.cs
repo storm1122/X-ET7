@@ -20,6 +20,33 @@ namespace ET.Client
             new TSVector(20, 0, 40),
         };
 
+      
+        
+        private List<List<List<int>>> BornInfo = new List<List<List<int>>>()
+        {
+            new List<List<int>>()
+            {
+                new List<int>(){1003,1003,1003,1003,1003,1003},
+                new List<int>(){1003,1003,1003,1003,1003,1003},
+                new List<int>(){1003,1003,1003,1003,1003,1003},
+            },
+            
+            new List<List<int>>()
+            {
+                new List<int>(){1003,1003,1003,1003,1003,1003},
+                new List<int>(){1003,1003,1003,1003,1003,1003},
+                new List<int>(){1003,1003,1003,1003,1003,1003},
+            },
+            
+            new List<List<int>>()
+            {
+                new List<int>(){1003,1003,1003,1003,1003,1003},
+                new List<int>(){1003,1003,1003,1003,1003,1003},
+                new List<int>(){1003,1003,1003,1003,1003,1003},
+            },
+        };
+
+
     }
     
 }

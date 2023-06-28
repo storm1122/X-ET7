@@ -7,6 +7,19 @@
         protected override void Awake(Creature self, int configId)
         {
             self.ConfigId = configId;
+
+            var attrComponent = self.AddComponent<AttrComponent>();
+            foreach (var attr in self.Config.Attrs)
+            {
+                int bas = (int)attr.Key * 10 + 1;
+                
+                attrComponent.Set(bas,attr.Value);
+                
+                Log.Console($"{attr.Key}:{attrComponent[(int)attr.Key]}");
+            }
+       
+
+            
         }
     }
 

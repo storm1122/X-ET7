@@ -1,4 +1,5 @@
-﻿using TrueSync;
+﻿using System.Collections.Generic;
+using TrueSync;
 
 namespace ET.Client
 {
@@ -8,4 +9,6 @@ namespace ET.Client
         public int ConfigId;
         public TSVector Pos;
     }
+
+ 
 }

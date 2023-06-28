@@ -12,6 +12,7 @@ namespace ET.Client
         private TSVector position;
 
         public CreatureType CreatureType;
+        public CreatureConfig Config => CreatureConfigCategory.Instance.Get(this.ConfigId);
         
         public TSVector Position
         {

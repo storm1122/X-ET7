@@ -11,9 +11,22 @@ namespace ET
 { 
     public enum EnAttr
     {
-        MaxHp = 0,
-        Atk = 1,
-        MoveSpeed = 2,
+        /// <summary>
+        /// 最大血量
+        /// </summary>
+        MaxHp = 1001,
+        /// <summary>
+        /// 攻击
+        /// </summary>
+        Atk = 1002,
+        /// <summary>
+        /// 移动速度
+        /// </summary>
+        MoveSpeed = 1003,
+        /// <summary>
+        /// 半径
+        /// </summary>
+        Radius = 1004,
     }
 
 } 
