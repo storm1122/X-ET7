@@ -14,18 +14,18 @@ namespace ET
 [Config]
 public partial class FootHoldCategory: ConfigSingleton<FootHoldCategory>
 {
-    private readonly Dictionary<int, FootHold> _dataMap;
-    private readonly List<FootHold> _dataList;
+    private readonly Dictionary<int, FootHoldConfig> _dataMap;
+    private readonly List<FootHoldConfig> _dataList;
     
     public FootHoldCategory(ByteBuf _buf)
     {
-        _dataMap = new Dictionary<int, FootHold>();
-        _dataList = new List<FootHold>();
+        _dataMap = new Dictionary<int, FootHoldConfig>();
+        _dataList = new List<FootHoldConfig>();
         
         for(int n = _buf.ReadSize() ; n > 0 ; --n)
         {
-            FootHold _v;
-            _v = FootHold.DeserializeFootHold(_buf);
+            FootHoldConfig _v;
+            _v = FootHoldConfig.DeserializeFootHoldConfig(_buf);
             _dataList.Add(_v);
             _dataMap.Add(_v.Id, _v);
         }
@@ -37,16 +37,16 @@ public partial class FootHoldCategory: ConfigSingleton<FootHoldCategory>
         return _dataMap.ContainsKey(id);
     }
 
-    public Dictionary<int, FootHold> GetAll()
+    public Dictionary<int, FootHoldConfig> GetAll()
     {
         return _dataMap;
     }
     
-    public List<FootHold> DataList => _dataList;
+    public List<FootHoldConfig> DataList => _dataList;
 
-    public FootHold GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-    public FootHold Get(int key) => _dataMap[key];
-    public FootHold this[int key] => _dataMap[key];
+    public FootHoldConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
+    public FootHoldConfig Get(int key) => _dataMap[key];
+    public FootHoldConfig this[int key] => _dataMap[key];
 
     public override void Resolve(Dictionary<string, IConfigSingleton> _tables)
     {
@@ -74,7 +74,7 @@ public partial class FootHoldCategory: ConfigSingleton<FootHoldCategory>
     
     public override string ConfigName()
     {
-        return typeof(FootHold).Name;
+        return typeof(FootHoldConfig).Name;
     }
     
     partial void PostInit();

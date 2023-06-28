@@ -678,7 +678,8 @@ namespace ET
         {
             if (a is IBattleEvt)
             {
-                Log.Console($"{a.ToString().Replace("ET.Client.BattleEvent.", "")} : {a.ToJson()}");
+                // Log.Console($"{a.ToString().Replace("ET.Client.BattleEvent.", "")} : {a.ToJson()}");
+                Log.Console($"{a.ToString().Replace("ET.Client.BattleEvent.", "")}");
             }
             
             List<EventInfo> iEvents;

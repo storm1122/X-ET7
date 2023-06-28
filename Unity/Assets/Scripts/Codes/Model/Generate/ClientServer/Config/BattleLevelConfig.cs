@@ -18,8 +18,7 @@ public sealed partial class BattleLevelConfig: Bright.Config.BeanBase
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);FootHoldIds = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); FootHoldIds.Add(_e0);}}
-        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);IdList = new int[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { int __e0;__e0 = _buf.ReadInt(); IdList[__index0] = __e0;}}
+        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);FootHoldIds = new int[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { int __e0;__e0 = _buf.ReadInt(); FootHoldIds[__index0] = __e0;}}
         {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PosXList = new int[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { int __e0;__e0 = _buf.ReadInt(); PosXList[__index0] = __e0;}}
         {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PosYList = new int[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { int __e0;__e0 = _buf.ReadInt(); PosYList[__index0] = __e0;}}
         {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PosZList = new int[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { int __e0;__e0 = _buf.ReadInt(); PosZList[__index0] = __e0;}}
@@ -33,11 +32,7 @@ public sealed partial class BattleLevelConfig: Bright.Config.BeanBase
 
     public int Id { get; private set; }
     public string Name { get; private set; }
-    /// <summary>
-    /// FootHoldConfig中的落脚点Id
-    /// </summary>
-    public System.Collections.Generic.List<int> FootHoldIds { get; private set; }
-    public int[] IdList { get; private set; }
+    public int[] FootHoldIds { get; private set; }
     public int[] PosXList { get; private set; }
     public int[] PosYList { get; private set; }
     public int[] PosZList { get; private set; }
@@ -60,7 +55,6 @@ public sealed partial class BattleLevelConfig: Bright.Config.BeanBase
         + "Id:" + Id + ","
         + "Name:" + Name + ","
         + "FootHoldIds:" + Bright.Common.StringUtil.CollectionToString(FootHoldIds) + ","
-        + "IdList:" + Bright.Common.StringUtil.CollectionToString(IdList) + ","
         + "PosXList:" + Bright.Common.StringUtil.CollectionToString(PosXList) + ","
         + "PosYList:" + Bright.Common.StringUtil.CollectionToString(PosYList) + ","
         + "PosZList:" + Bright.Common.StringUtil.CollectionToString(PosZList) + ","

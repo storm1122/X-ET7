@@ -9,6 +9,11 @@ namespace ET.Client
         protected override void Awake(FootHold self, int configId)
         {
             self.ConfigId = configId;
+
+            foreach (var cfgId in self.Config.SpawnIds)
+            {
+                self.AddChild<SpawnComponent, int>(cfgId);
+            }
         }
     }
 
@@ -23,6 +28,5 @@ namespace ET.Client
 
     public static class FootHoldSystem
     {
-        
     }
 }

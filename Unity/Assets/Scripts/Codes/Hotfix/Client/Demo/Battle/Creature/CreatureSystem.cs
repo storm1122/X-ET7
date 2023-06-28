@@ -14,12 +14,12 @@
                 int bas = (int)attr.Key * 10 + 1;
                 
                 attrComponent.Set(bas,attr.Value);
-                
-                Log.Console($"{attr.Key}:{attrComponent[(int)attr.Key]}");
             }
-       
 
-            
+            if (attrComponent[AttrType.MoveSpeed] > 0)
+            {
+                self.AddComponent<MoveComponent>();
+            }
         }
     }
 

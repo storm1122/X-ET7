@@ -9,5 +9,7 @@ namespace ET
         public const bool RobotBattleCase = true;
 
         public const string BattleSceneName = "Battle";
+
+        public const int BattleLevelConfigId = 1;
     }
 }

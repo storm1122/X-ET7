@@ -23,38 +23,20 @@ namespace ET.Client
 
             var battleData = currentScene.AddComponent<BattleData>();
 
-            // 落脚点设置
-            var footHoldComponent = currentScene.AddComponent<FootHoldComponent>();
+            // 设置关卡
+            var footHoldComponent = currentScene.AddComponent<FootHoldComponent, int>(ConstValue.BattleLevelConfigId);
 
-            footHoldComponent.CurPathIdx = battleData.CurPathIdx;
-
-            int idx = 0;
-            foreach (var pos in battleData.Path)
-            {
-                int cfgId = 1;
-                var footHold = footHoldComponent.AddChildWithId<FootHold, int>(idx, cfgId);
-                
-                footHold.Pos = pos;
-
-                var spawnComponent = footHold.AddChild<SpawnComponent, int>(cfgId);
-
-                if (idx == 0)
-                {
-                    spawnComponent.WaitSpawn();
-                }
-                
-                idx++;
-            }
-
+            footHoldComponent.CurPathIdx = 0;
+       
             // 创建城堡
             var creatureComponent = currentScene.AddComponent<CreatureComponent>();
             var c1 = creatureComponent.CreateCreature(1001, CreatureType.Castle);
-
             c1.Position = footHoldComponent.GetChild<FootHold>(0).Pos;
-
-            var move = c1.AddComponent<MoveComponent>();
-
-            move.MoveToAsync(battleData.Path, 10).Coroutine();
+            // 城堡移动
+            var move = c1.GetComponent<MoveComponent>();
+            move.MoveToAsync(battleData.Path, c1.GetComponent<AttrComponent>().GetAsLong(AttrType.MoveSpeed)).Coroutine();
+            
+            footHoldComponent.Active();
 
             EventSystem.Instance.Publish(currentScene, new Evt_SceneEnter());
 

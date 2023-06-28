@@ -12,9 +12,9 @@ using System.Collections.Generic;
 namespace ET
 {
 
-public sealed partial class FootHold: Bright.Config.BeanBase
+public sealed partial class FootHoldConfig: Bright.Config.BeanBase
 {
-    public FootHold(ByteBuf _buf) 
+    public FootHoldConfig(ByteBuf _buf) 
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
@@ -22,9 +22,9 @@ public sealed partial class FootHold: Bright.Config.BeanBase
         PostInit();
     }
 
-    public static FootHold DeserializeFootHold(ByteBuf _buf)
+    public static FootHoldConfig DeserializeFootHoldConfig(ByteBuf _buf)
     {
-        return new FootHold(_buf);
+        return new FootHoldConfig(_buf);
     }
 
     public int Id { get; private set; }
@@ -34,7 +34,7 @@ public sealed partial class FootHold: Bright.Config.BeanBase
     /// </summary>
     public System.Collections.Generic.List<int> SpawnIds { get; private set; }
 
-    public const int __ID__ = 458551917;
+    public const int __ID__ = -285008881;
     public override int GetTypeId() => __ID__;
 
     public  void Resolve(Dictionary<string, IConfigSingleton> _tables)

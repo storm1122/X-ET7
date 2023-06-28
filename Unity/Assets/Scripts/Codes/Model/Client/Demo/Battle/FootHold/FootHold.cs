@@ -7,7 +7,10 @@ namespace ET.Client
     public class FootHold : Entity , IAwake<int> , IDestroy
     {
         public int ConfigId;
-        public TSVector Pos;
+        public TSVector Pos { get; set; }
+        
+        
+        public FootHoldConfig Config => FootHoldCategory.Instance.Get(this.ConfigId);
     }
 
  
