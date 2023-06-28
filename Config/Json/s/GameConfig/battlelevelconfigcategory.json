@@ -8,7 +8,11 @@
       3,
       4,
       5
-    ]
+    ],
+    "IdList": [],
+    "PosXList": [],
+    "PosYList": [],
+    "PosZList": []
   },
   {
     "Id": 2,
@@ -16,6 +20,64 @@
     "FootHoldIds": [
       6,
       7
+    ],
+    "IdList": [],
+    "PosXList": [],
+    "PosYList": [],
+    "PosZList": []
+  },
+  {
+    "Id": 3,
+    "Name": "关卡C",
+    "FootHoldIds": [],
+    "IdList": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "PosXList": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "PosYList": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "PosZList": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "Id": 4,
+    "Name": "关卡D",
+    "FootHoldIds": [],
+    "IdList": [
+      6,
+      7
+    ],
+    "PosXList": [
+      0,
+      0
+    ],
+    "PosYList": [
+      0,
+      0
+    ],
+    "PosZList": [
+      0,
+      10
     ]
   }
 ]

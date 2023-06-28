@@ -18,7 +18,6 @@ public sealed partial class FootHold: Bright.Config.BeanBase
     {
         Id = _buf.ReadInt();
         Name = _buf.ReadString();
-        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);Pos = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); Pos.Add(_e0);}}
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SpawnIds = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); SpawnIds.Add(_e0);}}
         PostInit();
     }
@@ -30,10 +29,6 @@ public sealed partial class FootHold: Bright.Config.BeanBase
 
     public int Id { get; private set; }
     public string Name { get; private set; }
-    /// <summary>
-    /// 位置XYZ
-    /// </summary>
-    public System.Collections.Generic.List<int> Pos { get; private set; }
     /// <summary>
     /// SpawnConfig中的Id
     /// </summary>
@@ -56,7 +51,6 @@ public sealed partial class FootHold: Bright.Config.BeanBase
         return "{ "
         + "Id:" + Id + ","
         + "Name:" + Name + ","
-        + "Pos:" + Bright.Common.StringUtil.CollectionToString(Pos) + ","
         + "SpawnIds:" + Bright.Common.StringUtil.CollectionToString(SpawnIds) + ","
         + "}";
     }

@@ -29,8 +29,17 @@ public sealed partial class SpawnConfig: Bright.Config.BeanBase
     }
 
     public int Id { get; private set; }
+    /// <summary>
+    /// 延迟
+    /// </summary>
     public int DelayTime { get; private set; }
+    /// <summary>
+    /// 间隔
+    /// </summary>
     public int Interval { get; private set; }
+    /// <summary>
+    /// 生物id
+    /// </summary>
     public System.Collections.Generic.List<int> CreatureIds { get; private set; }
 
     public const int __ID__ = -780975491;
