@@ -11,26 +11,12 @@ namespace ET.Client
         {
             self.ConfigId = configId;
 
-            if (!self.CheckConfig())
-            {
-                return;
-            }
-
             self.CurPathIdx = 0;
 
-            var footHoldIds = self.Config.FootHoldIds;
-            
-            for (int i = 0; i < footHoldIds.Length; i++)
+            for (int i = 0; i < self.Config.SpawnInfos.Length; i++)
             {
                 // 创建
-                var footHoldConfigId = footHoldIds[i];
-                var footHold = self.AddChildWithId<FootHold, int>(i, footHoldConfigId);
-                // 位置
-                var x = self.Config.PosXList[i];
-                var y = self.Config.PosYList[i];
-                var z = self.Config.PosZList[i];
-                footHold.Pos = new TSVector(x, y, z);
-                // TODO 属性强化
+                var footHold = self.AddChildWithId<FootHold, int>(i, i);
             }
         }
     }
@@ -46,17 +32,6 @@ namespace ET.Client
     [FriendOfAttribute(typeof(ET.Client.FootHoldComponent))]
     public static class FootHoldComponentSystem
     {
-        public static bool CheckConfig(this FootHoldComponent self)
-        {
-            var count = self.Config.FootHoldIds.Length;
-            if (count != self.Config.PosXList.Length || count != self.Config.PosYList.Length || count != self.Config.PosZList.Length)
-            {
-                Log.Error($"BattleLevelConfig中数量不正确，configId：{self.ConfigId}");
-                return false;
-            }
-
-            return true;
-        }
 
         public static void Active(this FootHoldComponent self)
         {

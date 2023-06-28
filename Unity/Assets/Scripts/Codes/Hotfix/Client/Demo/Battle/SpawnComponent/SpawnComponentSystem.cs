@@ -41,6 +41,7 @@
             self.Timer = TimerComponent.Instance.NewOnceTimer(TimeHelper.ClientNow() + delay, TimerInvokeType.BattleSpawnTimer, self);
         }
 
+    
         public static async ETTask Spawn(this SpawnComponent self)
         {
             var creatureComponent = self.DomainScene().GetComponent<CreatureComponent>();
@@ -50,18 +51,32 @@
                 return;
             }
 
-            foreach (var creatureId in self.Config.CreatureIds)
+            if (self.Config.CreatureIds.Count != self.Config.CreatureCount.Count)
             {
+                Log.Error($"SpawnConfig中，数量配置不正确，Id：{self.ConfigId}");
+                return;
+            }
+
+            for (int i = 0; i < self.Config.CreatureIds.Count; i++)
+            {
+                var creatureId = self.Config.CreatureIds[i];
+                int spawnCount = self.Config.CreatureCount[i];
+                
                 CreatureConfig cfg = CreatureConfigCategory.Instance.GetOrDefault(creatureId);
                 if (cfg == null)
                 {
                     Log.Error($"CreatureConfig中找不到CreatureId：{creatureId}");
                     continue;
                 }
-                var creature = creatureComponent.CreateCreature(creatureId, cfg.Type);
-                // todo 设置初始位置
+
+                for (int j = 0; j < spawnCount; j++)
+                {
+                    var creature = self.DomainScene().GetComponent<CreatureComponent>().CreateCreature(creatureId, cfg.Type);
+                    
+                    // todo 设置初始位置
                 
-                // todo 追踪组件
+                    // todo 追踪组件
+                }
 
                 
                 

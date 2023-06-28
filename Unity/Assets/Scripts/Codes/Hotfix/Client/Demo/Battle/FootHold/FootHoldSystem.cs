@@ -6,14 +6,24 @@ namespace ET.Client
     [ObjectSystem]
     public class FootHoldAwakeSystem: AwakeSystem<FootHold, int>
     {
-        protected override void Awake(FootHold self, int configId)
+        protected override void Awake(FootHold self, int idx)
         {
-            self.ConfigId = configId;
-
-            foreach (var cfgId in self.Config.SpawnIds)
+            self.Idx = idx;
+            
+            // 位置
+            var x = self.LvConfig.PosXList[self.Id];
+            var y = self.LvConfig.PosYList[self.Id];
+            var z = self.LvConfig.PosZList[self.Id];
+            self.Pos = new TSVector(x, y, z);
+            
+            // 刷怪
+            foreach (var cfgId in self.LvConfig.SpawnInfos[self.Id])
             {
                 self.AddChild<SpawnComponent, int>(cfgId);
             }
+            
+            // TODO 属性强化
+            
         }
     }
 

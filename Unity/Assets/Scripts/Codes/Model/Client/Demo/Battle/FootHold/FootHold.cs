@@ -6,11 +6,13 @@ namespace ET.Client
     [ChildOf(typeof(FootHoldComponent))]
     public class FootHold : Entity , IAwake<int> , IDestroy
     {
-        public int ConfigId;
+        public int Idx;
         public TSVector Pos { get; set; }
         
+        public List<int> SpawnConfigIds;
         
-        public FootHoldConfig Config => FootHoldCategory.Instance.Get(this.ConfigId);
+        public BattleLevelConfig LvConfig => this.GetParent<FootHoldComponent>().Config;
+
     }
 
  

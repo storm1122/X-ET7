@@ -7,6 +7,8 @@
         protected override void Awake(Creature self, int configId)
         {
             self.ConfigId = configId;
+            
+            self.CreatureType = self.Config.Type;
 
             var attrComponent = self.AddComponent<AttrComponent>();
             foreach (var attr in self.Config.Attrs)
@@ -20,6 +22,7 @@
             {
                 self.AddComponent<MoveComponent>();
             }
+
         }
     }
 

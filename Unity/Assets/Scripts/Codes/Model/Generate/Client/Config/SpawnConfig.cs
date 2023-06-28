@@ -20,6 +20,7 @@ public sealed partial class SpawnConfig: Bright.Config.BeanBase
         DelayTime = _buf.ReadInt();
         Interval = _buf.ReadInt();
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);CreatureIds = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); CreatureIds.Add(_e0);}}
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);CreatureCount = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); CreatureCount.Add(_e0);}}
         PostInit();
     }
 
@@ -41,6 +42,7 @@ public sealed partial class SpawnConfig: Bright.Config.BeanBase
     /// 生物id
     /// </summary>
     public System.Collections.Generic.List<int> CreatureIds { get; private set; }
+    public System.Collections.Generic.List<int> CreatureCount { get; private set; }
 
     public const int __ID__ = -780975491;
     public override int GetTypeId() => __ID__;
@@ -61,6 +63,7 @@ public sealed partial class SpawnConfig: Bright.Config.BeanBase
         + "DelayTime:" + DelayTime + ","
         + "Interval:" + Interval + ","
         + "CreatureIds:" + Bright.Common.StringUtil.CollectionToString(CreatureIds) + ","
+        + "CreatureCount:" + Bright.Common.StringUtil.CollectionToString(CreatureCount) + ","
         + "}";
     }
     
