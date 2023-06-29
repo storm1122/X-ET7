@@ -42,6 +42,7 @@ namespace ET.Client
 
         public static void CreatureDead(this CreatureComponent self, Creature creature)
         {
+            EventSystem.Instance.Publish(self.DomainScene(), new Evt_RemoveCreature { Creature = creature });
             creature.Dispose();
 
             var enemys = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);

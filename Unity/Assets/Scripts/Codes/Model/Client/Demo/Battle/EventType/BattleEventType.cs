@@ -19,6 +19,10 @@ namespace ET.Client
         {
             public Creature Creature;
         }
+        public struct Evt_RemoveCreature : IBattleEvt
+        {
+            public Creature Creature;
+        }
         
         public struct Evt_ChangePos
         {

@@ -42,6 +42,37 @@ namespace ET.Client
         }
     }
 
+
+    [Event(SceneType.Current)]
+    [FriendOfAttribute(typeof (ET.Client.CreatureView))]
+    public class Evt_RemoveCreatureHandler: AEvent<Scene, Evt_RemoveCreature>
+    {
+        protected override async ETTask Run(Scene currentScene, Evt_RemoveCreature a)
+        {
+            var create = a.Creature;
+
+            var viewComponent = currentScene.GetComponent<CreatureViewComponent>();
+
+            var view = viewComponent.GetChild<CreatureView>(create.Id);
+
+            if (view == null)
+            {
+                Log.Error($"找不到对应的CreatureView , id:{create.Id}");
+                return;
+            }
+            
+            if (view.GameObject != null)
+            {
+                UnityEngine.Object.DestroyImmediate(view.GameObject);
+                view.GameObject = null;
+            }
+            
+            view.Dispose();
+            
+            await ETTask.CompletedTask;
+        }
+    }
+
     [Event(SceneType.Current)]
     [FriendOfAttribute(typeof(ET.Client.CreatureView))]
     public class Evt_ChangePosHandler : AEvent<Scene, Evt_ChangePos>
