@@ -17,5 +17,19 @@
                 this.castle = value;
             }
         }
+        
+        private EntityRef<Creature> role;
+        
+        public Creature Role
+        {
+            get
+            {
+                return this.role;
+            }
+            set
+            {
+                this.role = value;
+            }
+        }
     }
 }

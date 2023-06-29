@@ -56,6 +56,8 @@ namespace ET.Client
 
             // 创建小人
             var role = creatureComponent.CreateCreature(ConstValue.RoleCreatureId, Camp.A);
+            creatureComponent.Role = role;
+            
         }
 
         public static void BattleStart(this BattleComponent self)

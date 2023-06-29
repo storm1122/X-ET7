@@ -1,4 +1,5 @@
-﻿using TrueSync;
+﻿using System.Collections.Generic;
+using TrueSync;
 using Unity.Mathematics;
 
 namespace ET.Client
@@ -80,6 +81,43 @@ namespace ET.Client
 
         }
 
+        public static void Move(this Creature self, FP h, FP v)
+        {
+            TSVector targetPos = self.Position + new TSVector(h, 0, v);
+            
+            List<TSVector> list = new List<TSVector>();
+            list.Add(self.Position);
+            list.Add(targetPos);
+            self.GetComponent<MoveComponent>().MoveToAsync(list, self.GetAttr().GetAsLong(AttrType.MoveSpeed)).Coroutine();
+        }
+
+        public static float ToFloat(this FP self)
+        {
+            float val = (float)self;
+            return val;
+        }
+        
+        public static void Set(this TSVector self, float3 val)
+        {
+            self = new TSVector(val.x, val.y, val.z);
+        }
+
+        public static void Set(this TSQuaternion self, quaternion val)
+        {
+            self = new TSQuaternion(val.value.x, val.value.y, val.value.z, val.value.w);
+        }
+        
+        public static float3 ToFloat3(this TSVector self)
+        {
+            var val = new float3((float)self.x, (float)self.y, (float)self.z);
+            return val;
+        }
+        public static quaternion ToQuaternion(this TSQuaternion self)
+        {
+            var val = new quaternion((float)self.x, (float)self.y, (float)self.z, (float)self.w);
+            return val;
+        }
+        
     }
     
     

@@ -90,6 +90,11 @@ namespace ET.Client
             {
                 await self.DomainScene().GetComponent<CreatureComponent>().GetComponent<ObjectWait>().Wait<Wait_KillAllCampB>();
             }
+
+            if (self.IsDisposed)
+            {
+                return;
+            }
             
             self.CurPathIdx++;
 

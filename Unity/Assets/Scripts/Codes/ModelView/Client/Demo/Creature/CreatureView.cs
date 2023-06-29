@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TrueSync;
+using UnityEngine;
 
 namespace ET.Client
 {
@@ -7,6 +8,8 @@ namespace ET.Client
     public class CreatureViewComponent : Entity, IAwake, IDestroy, IUpdate
     {
         public int Timer;
+        public int Idx;
+        public TSVector MoveDir;
     }
  
     

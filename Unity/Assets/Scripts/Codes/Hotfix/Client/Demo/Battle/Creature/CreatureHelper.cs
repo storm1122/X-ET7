@@ -9,6 +9,11 @@ namespace ET.Client
         {
             return currentScene.GetComponent<CreatureComponent>()?.Castle;
         }
+        
+        public static Creature GetRole(Scene currentScene)
+        {
+            return currentScene.GetComponent<CreatureComponent>()?.Role;
+        }
 
         public static List<Creature> GetCreature(Scene currentScene, CreatureType type)
         {

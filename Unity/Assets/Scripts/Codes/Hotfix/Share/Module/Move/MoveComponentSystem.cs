@@ -85,7 +85,7 @@ namespace ET
         }
 
         // 该方法不需要用cancelToken的方式取消，因为即使不传入cancelToken，多次调用该方法也要取消之前的移动协程,上层可以stop取消
-        public static async ETTask<bool> MoveToAsync(this MoveComponent self, List<TSVector> target, FP speed, int turnTime = 100)
+        public static async ETTask<bool> MoveToAsync(this MoveComponent self, List<TSVector> target, FP speed, int turnTime = 0)
         {
             self.Stop(false);
 
