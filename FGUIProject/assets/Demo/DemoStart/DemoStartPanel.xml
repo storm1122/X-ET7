@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080">
+  <displayList>
+    <list id="n2_i0nf" name="LvList" xy="72,100" size="350,800" overflow="scroll" lineGap="15" defaultItem="ui://2k63u5d6i0nf46" autoClearItems="true">
+      <relation target="" sidePair="left-left,top-top"/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+      <item/>
+    </list>
+    <component id="n5_i0nf" name="n5" src="i0nf47" fileName="Common/NormalInputField1.xml" xy="535,111"/>
+  </displayList>
+</component>
