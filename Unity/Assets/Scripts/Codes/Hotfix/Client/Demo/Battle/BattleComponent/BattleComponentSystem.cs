@@ -45,7 +45,7 @@ namespace ET.Client
 
             // 创建城堡
             var castle = creatureComponent.CreateCreature(ConstValue.CastleCreatureId, Camp.A);
-            castle.Position = footHoldComponent.GetChild<FootHold>(footHoldComponent.CurPathIdx + 1 ).Pos;
+            castle.Position = footHoldComponent.GetChild<FootHold>(footHoldComponent.CurPathIdx).Pos;
             creatureComponent.Castle = castle;
 
             // 创建小人
@@ -56,7 +56,7 @@ namespace ET.Client
         {
             self.BattleState = BattleState.Start;
 
-            self.DomainScene().GetComponent<FootHoldComponent>().Next();
+            self.DomainScene().GetComponent<FootHoldComponent>().Start();
         }
 
 

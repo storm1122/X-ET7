@@ -11,7 +11,7 @@ namespace ET
         public const string BattleSceneName = "Battle";
 
         public const int BattleLevelConfigId = 1;
-        public const int BattleLevelStartIdx = 1;
+        public const int BattleLevelStartIdx = 0;
         public const int CastleCreatureId = 9001;
         public const int RoleCreatureId = 8001;
     }

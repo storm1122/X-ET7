@@ -41,7 +41,7 @@ namespace ET.Client
         {
             self.ConfigId = configId;
 
-            self.CurPathIdx = startIdx - 1;
+            self.CurPathIdx = startIdx;
             
             self.CastMovePath = new List<TSVector>();
             
@@ -90,14 +90,15 @@ namespace ET.Client
             {
                 await self.DomainScene().GetComponent<CreatureComponent>().GetComponent<ObjectWait>().Wait<Wait_KillAllCampB>();
             }
+            
+            self.CurPathIdx++;
 
-            self.Next();
+            self.Start();
         }
        
 
-        public static void Next(this FootHoldComponent self)
+        public static void Start(this FootHoldComponent self)
         {
-            self.CurPathIdx++;
             
             var footHold = self.GetCurFootHold();
 
