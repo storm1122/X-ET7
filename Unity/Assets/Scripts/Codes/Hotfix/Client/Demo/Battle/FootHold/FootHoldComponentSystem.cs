@@ -65,22 +65,6 @@ namespace ET.Client
     [FriendOfAttribute(typeof(ET.Client.FootHoldComponent))]
     public static class FootHoldComponentSystem
     {
-        public static void SpawnCurEnemy(this FootHoldComponent self)
-        {
-            var footHold = self.GetChild<FootHold>(self.CurPathIdx);
-
-            if (footHold == null)
-            {
-                return;
-            }
-
-            foreach ((long key, Entity value) in footHold.Children)
-            {
-                SpawnComponent spawnComponent = (SpawnComponent)value;
-                spawnComponent.WaitSpawn();
-            }
-        }
-
         public static FootHold GetCurFootHold(this FootHoldComponent self)
         {
             var footHold = self.GetChild<FootHold>(self.CurPathIdx);
@@ -98,7 +82,7 @@ namespace ET.Client
                 return;
             }
 
-            //刷收关怪
+            //刷守关怪
             footHold.SpawnGuide();
             
             var allEnemy = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
