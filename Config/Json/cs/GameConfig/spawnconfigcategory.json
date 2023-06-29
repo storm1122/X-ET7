@@ -1,8 +1,8 @@
 [
   {
     "Id": 1001,
-    "DelayTime": 5000,
-    "Interval": 50,
+    "DelayTime": 100,
+    "Interval": 0,
     "CreatureIds": [
       1003,
       1004,
@@ -16,8 +16,8 @@
   },
   {
     "Id": 1002,
-    "DelayTime": 10000,
-    "Interval": 50,
+    "DelayTime": 200,
+    "Interval": 0,
     "CreatureIds": [
       1003,
       1004,
@@ -31,8 +31,8 @@
   },
   {
     "Id": 1003,
-    "DelayTime": 15000,
-    "Interval": 50,
+    "DelayTime": 300,
+    "Interval": 0,
     "CreatureIds": [
       1003,
       1004,
@@ -46,8 +46,8 @@
   },
   {
     "Id": 1004,
-    "DelayTime": 20000,
-    "Interval": 50,
+    "DelayTime": 400,
+    "Interval": 0,
     "CreatureIds": [
       1003,
       1004,
@@ -62,7 +62,7 @@
   {
     "Id": 1005,
     "DelayTime": 0,
-    "Interval": 50,
+    "Interval": 0,
     "CreatureIds": [
       1003,
       1004,

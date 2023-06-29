@@ -1,4 +1,6 @@
-﻿namespace ET.Client
+﻿using TrueSync;
+
+namespace ET.Client
 {
     [Invoke(TimerInvokeType.BattleSpawnTimer)]
     public class SpawnComponentTimeout: ATimer<SpawnComponent>
@@ -31,8 +33,9 @@
             self.CancelInterval = null;
         }
     }
-    
+
     [FriendOfAttribute(typeof(ET.Client.SpawnComponent))]
+    [FriendOfAttribute(typeof(ET.Client.Creature))]
     public static class SpawnComponentSystem
     {
         public static void WaitSpawn(this SpawnComponent self)
@@ -41,7 +44,7 @@
             self.Timer = TimerComponent.Instance.NewOnceTimer(TimeHelper.ClientNow() + delay, TimerInvokeType.BattleSpawnTimer, self);
         }
 
-    
+
         public static async ETTask Spawn(this SpawnComponent self)
         {
             var creatureComponent = self.DomainScene().GetComponent<CreatureComponent>();
@@ -61,7 +64,7 @@
             {
                 var creatureId = self.Config.CreatureIds[i];
                 int spawnCount = self.Config.CreatureCount[i];
-                
+
                 CreatureConfig cfg = CreatureConfigCategory.Instance.GetOrDefault(creatureId);
                 if (cfg == null)
                 {
@@ -71,17 +74,21 @@
 
                 for (int j = 0; j < spawnCount; j++)
                 {
-                    var creature = self.DomainScene().GetComponent<CreatureComponent>().CreateCreature(creatureId, cfg.Type);
-                    
+                    var creature = self.DomainScene().GetComponent<CreatureComponent>().CreateCreature(creatureId, Camp.B);
+
                     // todo 设置初始位置
-                
+
+                    var list = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
+
+                    creature.Position = new TSVector(-5, 0, list.Count * 2);
+
                     // todo 追踪组件
                 }
 
-                
-                
+
+
                 await TimerComponent.Instance.WaitAsync(self.Config.Interval, self.CancelInterval);
-                
+
                 if (self.CancelInterval.IsCancel())
                 {
                     return;

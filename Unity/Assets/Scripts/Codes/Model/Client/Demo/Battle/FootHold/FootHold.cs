@@ -4,7 +4,7 @@ using TrueSync;
 namespace ET.Client
 {
     [ChildOf(typeof(FootHoldComponent))]
-    public class FootHold : Entity , IAwake<int> , IDestroy
+    public class FootHold : Entity , IAwake<int> , IDestroy, IUpdate    
     {
         public int Idx;
         public TSVector Pos { get; set; }

@@ -2,7 +2,6 @@
 
 namespace ET.Client
 {
-
     [ObjectSystem]
     public class FootHoldAwakeSystem: AwakeSystem<FootHold, int>
     {
@@ -35,6 +34,30 @@ namespace ET.Client
             self.Pos = TSVector.zero;
         }
     }
+
+
+    //
+    // [ObjectSystem]
+    // [FriendOfAttribute(typeof(ET.Client.FootHoldComponent))]
+    // [FriendOfAttribute(typeof(ET.MoveComponent))]
+    // public class FootHoldUpdateSystem : UpdateSystem<FootHold>
+    // {
+    //     protected override void Update(FootHold self)
+    //     {
+    //         var footHoldComponent = self.Parent as FootHoldComponent;
+    //         if (self.Idx != footHoldComponent.CurPathIdx)
+    //         {
+    //             return;
+    //         }
+    //
+    //         var castle = self.DomainScene().GetComponent<CreatureComponent>().Castle;
+    //
+    //         if (TSVector.Distance(castle.Position, self.Pos) <= 0.2)
+    //         {
+    //             footHoldComponent.EnterNextFootHold();
+    //         }
+    //     }
+    // }
 
     public static class FootHoldSystem
     {

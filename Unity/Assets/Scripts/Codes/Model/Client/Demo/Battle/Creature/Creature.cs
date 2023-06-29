@@ -4,10 +4,19 @@ using Unity.Mathematics;
 
 namespace ET.Client
 {
+    public enum Camp
+    {
+        None,
+        A,
+        B,
+    }
+    
     [ChildOf(typeof(CreatureComponent))]
     public class Creature : Entity , IAwake<int>, IDestroy
     {
         public int ConfigId;
+
+        public Camp Camp;
 
         private TSVector position;
 
@@ -43,6 +52,12 @@ namespace ET.Client
             get => this.Rotation * TSVector.forward;
             set => this.Rotation = TSQuaternion.LookRotation(value, TSVector.up);
         }
+
+        public bool Alive
+        {
+            get => this.GetComponent<AttrComponent>()[AttrType.Hp] > 0;
+        }
         
     }
+    
 }

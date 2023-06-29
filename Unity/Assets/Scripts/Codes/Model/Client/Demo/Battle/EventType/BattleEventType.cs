@@ -37,5 +37,10 @@ namespace ET.Client
         {
             public Creature Creature;
         }
+        public struct Evt_MovePathEnd
+        {
+            public Creature Creature;
+            public int N;
+        }
     }
 }

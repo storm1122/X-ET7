@@ -7,6 +7,7 @@ namespace ET.Client
     {
         protected override void Awake(CreatureComponent self)
         {
+            self.AddComponent<ObjectWait>();
         }
     }
 
@@ -17,17 +18,40 @@ namespace ET.Client
         {
         }
     }
+
+    [ObjectSystem]
+    public class CreatureComponentUpdateSystem: UpdateSystem<CreatureComponent>
+    {
+        protected override void Update(CreatureComponent self)
+        {
+            
+        }
+    }
+
+
     [FriendOfAttribute(typeof(ET.Client.Creature))]
     public static class CreatureComponentSystem
     {
-        public static Creature CreateCreature(this CreatureComponent self, int configId, CreatureType type)
+        public static Creature CreateCreature(this CreatureComponent self, int configId, Camp camp)
         {
             var creature = self.AddChild<Creature, int>(configId);
             EventSystem.Instance.Publish(self.DomainScene(), new Evt_CreateCreature { Creature = creature });
-            creature.CreatureType = type;
+            creature.Camp = camp;
             return creature;
         }
 
+        public static void CreatureDead(this CreatureComponent self, Creature creature)
+        {
+            creature.Dispose();
+
+            var enemys = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
+            if (enemys.Count <= 0)
+            {
+                self.GetComponent<ObjectWait>().Notify(new Wait_KillAllCampB());
+            }
+
+        }
+        
     }
 }
 
