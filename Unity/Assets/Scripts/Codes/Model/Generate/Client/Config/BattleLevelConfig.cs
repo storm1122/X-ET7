@@ -21,6 +21,7 @@ public sealed partial class BattleLevelConfig: Bright.Config.BeanBase
         {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PosXList = new int[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { int __e0;__e0 = _buf.ReadInt(); PosXList[__index0] = __e0;}}
         {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PosYList = new int[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { int __e0;__e0 = _buf.ReadInt(); PosYList[__index0] = __e0;}}
         {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PosZList = new int[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { int __e0;__e0 = _buf.ReadInt(); PosZList[__index0] = __e0;}}
+        {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SpawnGuide = new System.Collections.Generic.List<int>[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { System.Collections.Generic.List<int> __e0;{int n1 = System.Math.Min(_buf.ReadSize(), _buf.Size);__e0 = new System.Collections.Generic.List<int>(n1);for(var i1 = 0 ; i1 < n1 ; i1++) { int _e1;  _e1 = _buf.ReadInt(); __e0.Add(_e1);}} SpawnGuide[__index0] = __e0;}}
         {int __n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SpawnInfos = new System.Collections.Generic.List<int>[__n0];for(var __index0 = 0 ; __index0 < __n0 ; __index0++) { System.Collections.Generic.List<int> __e0;{int n1 = System.Math.Min(_buf.ReadSize(), _buf.Size);__e0 = new System.Collections.Generic.List<int>(n1);for(var i1 = 0 ; i1 < n1 ; i1++) { int _e1;  _e1 = _buf.ReadInt(); __e0.Add(_e1);}} SpawnInfos[__index0] = __e0;}}
         PostInit();
     }
@@ -44,6 +45,10 @@ public sealed partial class BattleLevelConfig: Bright.Config.BeanBase
     /// Z坐标
     /// </summary>
     public int[] PosZList { get; private set; }
+    /// <summary>
+    /// 守关怪
+    /// </summary>
+    public System.Collections.Generic.List<int>[] SpawnGuide { get; private set; }
     /// <summary>
     /// SpawnConfig中的Id
     /// </summary>
@@ -69,6 +74,7 @@ public sealed partial class BattleLevelConfig: Bright.Config.BeanBase
         + "PosXList:" + Bright.Common.StringUtil.CollectionToString(PosXList) + ","
         + "PosYList:" + Bright.Common.StringUtil.CollectionToString(PosYList) + ","
         + "PosZList:" + Bright.Common.StringUtil.CollectionToString(PosZList) + ","
+        + "SpawnGuide:" + Bright.Common.StringUtil.CollectionToString(SpawnGuide) + ","
         + "SpawnInfos:" + Bright.Common.StringUtil.CollectionToString(SpawnInfos) + ","
         + "}";
     }

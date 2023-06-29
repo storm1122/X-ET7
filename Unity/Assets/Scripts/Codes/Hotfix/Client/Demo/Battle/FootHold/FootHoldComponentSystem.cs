@@ -35,16 +35,16 @@ namespace ET.Client
     
     [ObjectSystem]
     [FriendOfAttribute(typeof(ET.Client.FootHold))]
-    public class FootHoldComponentAwakeSystem : AwakeSystem<FootHoldComponent, int>
+    public class FootHoldComponentAwakeSystem : AwakeSystem<FootHoldComponent, int, int>
     {
-        protected override void Awake(FootHoldComponent self, int configId)
+        protected override void Awake(FootHoldComponent self, int configId, int startIdx)
         {
             self.ConfigId = configId;
+
+            self.CurPathIdx = startIdx - 1;
             
             self.CastMovePath = new List<TSVector>();
             
-            self.CurPathIdx = -1;
-
             for (int i = 0; i < self.Config.SpawnInfos.Length; i++)
             {
                 // 创建
@@ -59,7 +59,6 @@ namespace ET.Client
     {
         protected override void Destroy(FootHoldComponent self)
         {
-            self.CurPathIdx = -1;
             self.CastMovePath.Clear();
         }
     }
@@ -82,25 +81,56 @@ namespace ET.Client
             }
         }
 
+        public static FootHold GetCurFootHold(this FootHoldComponent self)
+        {
+            var footHold = self.GetChild<FootHold>(self.CurPathIdx);
+            return footHold;
+        }
+
+        //正常通关，需要刷守关怪物
         public static async ETTask EnterFootHold(this FootHoldComponent self)
         {
-            self.CurPathIdx++;
+            var footHold = self.GetCurFootHold();
+
+            if (footHold == null)
+            {
+                Log.Error($"当前关卡获取错误!");
+                return;
+            }
+
+            //刷收关怪
+            footHold.SpawnGuide();
             
-            var castle = self.DomainScene().GetComponent<CreatureComponent>().Castle;
-
-            Log.Console($"进入据点 idx：{self.CurPathIdx}, pos:{castle.Position.ToString()}");
-
-            var enemys = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
-
-            if (enemys.Count > 0)
+            var allEnemy = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
+            if (allEnemy.Count > 0)
             {
                 await self.DomainScene().GetComponent<CreatureComponent>().GetComponent<ObjectWait>().Wait<Wait_KillAllCampB>();
             }
+
+            self.Next();
+        }
+       
+
+        public static void Next(this FootHoldComponent self)
+        {
+            self.CurPathIdx++;
             
+            var footHold = self.GetCurFootHold();
+
+            if (footHold == null)
+            {
+                //todo 战斗通关
+                Log.Console($"战斗通关!");
+                return;
+            }
+            
+            var castle = self.DomainScene().GetComponent<CreatureComponent>().Castle;
+
+            Log.Console($"开始移动到下一个据点 idx：{self.CurPathIdx}, pos:{castle.Position.ToString()}");
+      
             MoveCastle.StartMove(self.DomainScene());
             
-            self.SpawnCurEnemy();
-
+            self.GetCurFootHold()?.SpawnNormal();
         }
         
         

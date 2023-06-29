@@ -14,15 +14,6 @@ namespace ET.Client
             var y = self.LvConfig.PosYList[self.Id];
             var z = self.LvConfig.PosZList[self.Id];
             self.Pos = new TSVector(x, y, z);
-            
-            // 刷怪
-            foreach (var cfgId in self.LvConfig.SpawnInfos[self.Id])
-            {
-                self.AddChild<SpawnComponent, int>(cfgId);
-            }
-            
-            // TODO 属性强化
-            
         }
     }
 
@@ -61,5 +52,25 @@ namespace ET.Client
 
     public static class FootHoldSystem
     {
+        //守关者，杀光才能刷普通怪
+        public static void SpawnGuide(this FootHold self)
+        {
+            foreach (var cfgId in self.LvConfig.SpawnGuide[self.Id])
+            {
+                var spawnComponent =  self.AddChild<SpawnComponent, int>(cfgId);
+                spawnComponent.Spawn().Coroutine();
+            }
+        }
+        
+        //刷普通怪
+        public static void SpawnNormal(this FootHold self)
+        {
+            foreach (var cfgId in self.LvConfig.SpawnInfos[self.Id])
+            {
+                var spawnComponent =  self.AddChild<SpawnComponent, int>(cfgId);
+                spawnComponent.WaitSpawn();
+            }
+        }
+
     }
 }

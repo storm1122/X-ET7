@@ -4,7 +4,7 @@ using TrueSync;
 namespace ET.Client
 {
     [ComponentOf(typeof(Scene))]
-    public class FootHoldComponent : Entity , IAwake<int> , IDestroy
+    public class FootHoldComponent : Entity , IAwake<int, int> , IDestroy
     {
         public int ConfigId;
         public int CurPathIdx;

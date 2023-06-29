@@ -36,7 +36,8 @@ namespace ET.Client
             self.BattleState = BattleState.Awake;
             
             // 设置关卡
-            var footHoldComponent = currentScene.AddComponent<FootHoldComponent, int>(ConstValue.BattleLevelConfigId);
+            int startFootHoldIdx = 0; //从哪个落脚点开始，默认为0， SL的话，可能会从后面的序号开始
+            var footHoldComponent = currentScene.AddComponent<FootHoldComponent, int, int>(ConstValue.BattleLevelConfigId, startFootHoldIdx);
 
             // 创建城堡
             var creatureComponent = currentScene.AddComponent<CreatureComponent>();
@@ -50,7 +51,7 @@ namespace ET.Client
         {
             self.BattleState = BattleState.Start;
             
-            self.DomainScene().GetComponent<FootHoldComponent>().EnterFootHold().Coroutine();
+            self.DomainScene().GetComponent<FootHoldComponent>().Next();
         }
         
         

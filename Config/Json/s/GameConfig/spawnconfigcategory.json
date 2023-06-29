@@ -16,7 +16,7 @@
   },
   {
     "Id": 1002,
-    "DelayTime": 1000,
+    "DelayTime": 500,
     "Interval": 0,
     "CreatureIds": [
       1003,
@@ -31,7 +31,7 @@
   },
   {
     "Id": 1003,
-    "DelayTime": 1500,
+    "DelayTime": 500,
     "Interval": 0,
     "CreatureIds": [
       1003,
@@ -46,7 +46,7 @@
   },
   {
     "Id": 1004,
-    "DelayTime": 2000,
+    "DelayTime": 500,
     "Interval": 0,
     "CreatureIds": [
       1003,
