@@ -4,6 +4,11 @@
     {
         public static async ETTask SceneChangeTo(Scene clientScene, string sceneName, long sceneInstanceId)
         {
+
+            if (clientScene.GetComponent<BattleData>() == null)
+            {
+                clientScene.AddComponent<BattleData>();
+            }
             
             CurrentScenesComponent currentScenesComponent = clientScene.GetComponent<CurrentScenesComponent>();
             currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的

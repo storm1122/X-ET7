@@ -14,6 +14,9 @@ namespace ET.Client
         public struct Evt_SceneEnter : IBattleEvt
         {
         }
+        public struct Evt_BattleEnd : IBattleEvt
+        {
+        }
 
         public struct Evt_CreateCreature : IBattleEvt
         {

@@ -106,6 +106,7 @@ namespace ET.Client
             {
                 //todo 战斗通关
                 Log.Console($"战斗通关!");
+                self.DomainScene().GetComponent<BattleComponent>().BattleEnd();
                 return;
             }
             

@@ -6,7 +6,6 @@ namespace ET.Client
 {
 
     [Event(SceneType.Current)]
-    [FriendOfAttribute(typeof(ET.Client.BattleData))]
     [FriendOfAttribute(typeof(ET.Client.FootHold))]
     [FriendOfAttribute(typeof(ET.Client.Creature))]
     [FriendOfAttribute(typeof(ET.Client.FootHoldComponent))]

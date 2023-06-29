@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ET.Client.BattleEvent;
 using TrueSync;
 
 namespace ET.Client
@@ -28,18 +29,23 @@ namespace ET.Client
    }
     [FriendOfAttribute(typeof(ET.Client.BattleComponent))]
     [FriendOfAttribute(typeof(ET.Client.FootHoldComponent))]
+    [FriendOfAttribute(typeof(ET.Client.BattleData))]
     public static class BattleComponentSystem
     {
 
         public static void BattleAwake(this BattleComponent self)
         {
+            var battleData = self.ClientScene().GetComponent<BattleData>();
+
+            Log.Console($"开始战斗，关卡id:{battleData.BattleLevelConfigId} , 起始idx:{battleData.BattleLevelStartIdx}");
+
             var currentScene = self.DomainScene();
             self.BattleState = BattleState.Awake;
 
             // 设置关卡
             // 参数1：关卡id， 参数2：从哪个落脚点开始，默认为0， SL的话，可能会从后面的序号开始
             var footHoldComponent =
-                    currentScene.AddComponent<FootHoldComponent, int, int>(ConstValue.BattleLevelConfigId, ConstValue.BattleLevelStartIdx);
+                    currentScene.AddComponent<FootHoldComponent, int, int>(battleData.BattleLevelConfigId, battleData.BattleLevelStartIdx);
 
             var creatureComponent = currentScene.AddComponent<CreatureComponent>();
 
@@ -59,8 +65,10 @@ namespace ET.Client
             self.DomainScene().GetComponent<FootHoldComponent>().Start();
         }
 
-
-
+        public static void BattleEnd(this BattleComponent self)
+        {
+            EventSystem.Instance.Publish(self.DomainScene(), new Evt_BattleEnd { });
+        }
 
     }
 }

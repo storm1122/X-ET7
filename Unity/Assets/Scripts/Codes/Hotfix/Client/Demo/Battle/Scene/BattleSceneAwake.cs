@@ -8,7 +8,6 @@ namespace ET.Client
 {
 
     [Event(SceneType.Current)]
-    [FriendOfAttribute(typeof(ET.Client.BattleData))]
     [FriendOfAttribute(typeof(ET.Client.FootHold))]
     [FriendOfAttribute(typeof(ET.Client.Creature))]
     public class BattleSceneAwake : AEvent<Scene, EventType.AfterCreateCurrentScene>

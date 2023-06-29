@@ -5,6 +5,8 @@ namespace ET.Client
 	public enum PanelId
 	{
 		Invalid = 0,
+		DemoStartPanel,
+		DemoEndPanel,
 		HotUpdatePanel,
 		LobbyPanel,
 		LoginPanel,

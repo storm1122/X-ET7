@@ -117,9 +117,10 @@ namespace ET.Client
         {
             fuiComponent.Restart();
             
-            var uid = IdGenerater.Instance.GenerateInstanceId();
+            await fuiComponent.ShowPanelAsync(PanelId.DemoStartPanel);
 
-            await Client.SceneChangeHelper.SceneChangeTo(fuiComponent.ClientScene(), ConstValue.BattleSceneName, uid);
+            // var uid = IdGenerater.Instance.GenerateInstanceId();
+            // await Client.SceneChangeHelper.SceneChangeTo(fuiComponent.ClientScene(), ConstValue.BattleSceneName, uid);
             
             // // 打开登陆界面
             // LoginPanel_ContextData contextData = fuiComponent.AddChild<LoginPanel_ContextData>();

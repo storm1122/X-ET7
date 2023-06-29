@@ -16,4 +16,18 @@ namespace ET.Client
             await ETTask.CompletedTask;
         }
     }
+    
+    [Event(SceneType.Current)]
+    public class Evt_BattleEndHandler : AEvent<Scene, Evt_BattleEnd>
+    {
+        protected override async ETTask Run(Scene currentScene, Evt_BattleEnd a)
+        {
+            currentScene.GetComponent<FUIComponent>().ShowPanelAsync(PanelId.DemoEndPanel).Coroutine();
+            
+            await ETTask.CompletedTask;
+        }
+    }
+    
+    
+    
 }

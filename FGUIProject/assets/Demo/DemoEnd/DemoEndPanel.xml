@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<component size="1920,1080">
+<component size="1920,1080" remark="Main">
   <displayList>
     <component id="n0_i0nf" name="BtnBack" src="i0nf46" fileName="Common/NormalBtn1.xml" xy="52,56">
       <relation target="" sidePair="right-left,top-top"/>
