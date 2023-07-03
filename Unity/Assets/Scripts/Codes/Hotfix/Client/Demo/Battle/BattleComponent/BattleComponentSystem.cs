@@ -66,11 +66,5 @@ namespace ET.Client
 
             self.DomainScene().GetComponent<FootHoldComponent>().Start();
         }
-
-        public static void BattleEnd(this BattleComponent self)
-        {
-            EventSystem.Instance.Publish(self.DomainScene(), new Evt_BattleEnd { });
-        }
-
     }
 }
