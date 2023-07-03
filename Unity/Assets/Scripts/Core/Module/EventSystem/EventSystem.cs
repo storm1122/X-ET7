@@ -676,11 +676,11 @@ namespace ET
 
         public void Publish<S, T>(S scene, T a) where S: class, IScene where T : struct
         {
-            if (a is IBattleEvt)
-            {
-                // Log.Console($"{a.ToString().Replace("ET.Client.BattleEvent.", "")} : {a.ToJson()}");
-                Log.Console($"{a.ToString().Replace("ET.Client.BattleEvent.", "")}");
-            }
+            // if (a is IBattleEvt)
+            // {
+            //     // Log.Console($"{a.ToString().Replace("ET.Client.BattleEvent.", "")} : {a.ToJson()}");
+            //     Log.Console($"{a.ToString().Replace("ET.Client.BattleEvent.", "")}");
+            // }
             
             List<EventInfo> iEvents;
             if (!this.allEvents.TryGetValue(typeof (T), out iEvents))

@@ -39,7 +39,7 @@ namespace ET.Client
                 var role = CreatureHelper.GetRole(self.DomainScene());
 
                 role.Move(h, v);
-                Log.Console($"h:{h} , v:{v}");
+                // Log.Console($"h:{h} , v:{v}");
 
             }
 

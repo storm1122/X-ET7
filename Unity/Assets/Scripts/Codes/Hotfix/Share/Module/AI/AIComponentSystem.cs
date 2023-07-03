@@ -28,7 +28,7 @@ namespace ET
             protected override void Awake(AIComponent self, int aiConfigId)
             {
                 self.AIConfigId = aiConfigId;
-                self.Timer = TimerComponent.Instance.NewRepeatedTimer(1000, TimerInvokeType.AITimer, self);
+                self.Timer = TimerComponent.Instance.NewRepeatedTimer(300, TimerInvokeType.AITimer, self);  //原demo是1000间隔
             }
         }
 

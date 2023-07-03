@@ -55,6 +55,10 @@ namespace ET.Client
         //守关者，杀光才能刷普通怪
         public static void SpawnGuide(this FootHold self)
         {
+            if (self.Id >= self.LvConfig.SpawnGuide.Length)
+            {
+                return;
+            }
             foreach (var cfgId in self.LvConfig.SpawnGuide[self.Id])
             {
                 var spawnComponent =  self.AddChild<SpawnComponent, int>(cfgId);

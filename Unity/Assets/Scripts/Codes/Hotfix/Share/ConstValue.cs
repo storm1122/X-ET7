@@ -1,3 +1,5 @@
+using TrueSync;
+
 namespace ET
 {
     public static class ConstValue
@@ -14,5 +16,7 @@ namespace ET
         public const int BattleLevelStartIdx = 0;
         public const int CastleCreatureId = 9001;
         public const int RoleCreatureId = 8001;
+
+        public const float AtkRange = 2;
     }
 }

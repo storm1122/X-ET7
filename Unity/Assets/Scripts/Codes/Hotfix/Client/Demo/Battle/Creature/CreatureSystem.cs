@@ -91,6 +91,19 @@ namespace ET.Client
             self.GetComponent<MoveComponent>().MoveToAsync(list, self.GetAttr().GetAsLong(AttrType.MoveSpeed)).Coroutine();
         }
 
+        public static async ETTask MoveToTarget(this Creature self, Creature target)
+        {
+            List<TSVector> list = new List<TSVector>();
+            list.Add(self.Position);
+            list.Add(target.Position);
+            await self.GetComponent<MoveComponent>().MoveToAsync(list, self.GetAttr().GetAsLong(AttrType.MoveSpeed));
+        }
+        
+        public static void MoveStop(this Creature self)
+        {
+            self.GetComponent<MoveComponent>().Stop(true);
+        }
+
         public static float ToFloat(this FP self)
         {
             float val = (float)self;
