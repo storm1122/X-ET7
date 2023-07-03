@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component size="1920,1080" remark="Main">
+  <displayList>
+    <component id="n3_i0nf" name="ProgressBar" src="i0nf4b" fileName="DemoBattleInfo/ProgressBar1.xml" xy="1460,68" size="368,60">
+      <relation target="" sidePair="right-right,top-top"/>
+      <ProgressBar value="100" max="100"/>
+    </component>
+    <component id="n4_i0nf" name="BtnExit" src="i0nf46" fileName="Common/NormalBtn1.xml" xy="1643,194"/>
+  </displayList>
+</component>

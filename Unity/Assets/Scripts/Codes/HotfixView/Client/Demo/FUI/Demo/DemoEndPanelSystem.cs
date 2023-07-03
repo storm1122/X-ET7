@@ -11,9 +11,9 @@ namespace ET.Client
 		{
 			self.FUIDemoEndPanel.BtnBack.onClick.Add(() =>
 			{
-				self.DomainScene().GetComponent<FUIComponent>().HidePanel(PanelId.DemoEndPanel);
+				// self.DomainScene().GetComponent<FUIComponent>().HidePanel(PanelId.DemoEndPanel);
 
-				self.ClientScene().GetComponent<FUIComponent>().ShowPanelAsync(PanelId.DemoStartPanel).Coroutine();
+				SceneChangeHelper.SceneChangeTo(self.ClientScene(), ConstValue.LobbySceneName, 888).Coroutine();
 			});
 		}
 

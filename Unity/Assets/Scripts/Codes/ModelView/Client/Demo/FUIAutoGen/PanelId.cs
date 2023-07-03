@@ -7,6 +7,7 @@ namespace ET.Client
 		Invalid = 0,
 		DemoStartPanel,
 		DemoEndPanel,
+		DemoBattleInfo,
 		HotUpdatePanel,
 		LobbyPanel,
 		LoginPanel,

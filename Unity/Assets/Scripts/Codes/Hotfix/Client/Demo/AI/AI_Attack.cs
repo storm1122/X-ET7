@@ -46,16 +46,29 @@ namespace ET.Client
             
             
             var target = CreatureHelper.GetRole(currentScene);
-            
-         
+
+
+            var targetInstanceId = target.InstanceId;
 
             for (int i = 0; i < 100000; ++i)
             {
+                if (targetInstanceId != target.InstanceId)
+                {
+                    continue;
+                }
+                
                 Log.Debug($"攻击: {i}次");
 
                 // 因为协程可能被中断，任何协程都要传入cancellationToken，判断如果是中断则要返回
                 
                 await TimerComponent.Instance.WaitAsync(1000, cancellationToken);
+
+                if (creature.IsDisposed)
+                {
+                    return;
+                }
+                
+                creature.TestSpell2(target);
                 
                 if (cancellationToken.IsCancel())
                 {

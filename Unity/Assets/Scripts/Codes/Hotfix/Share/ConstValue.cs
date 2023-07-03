@@ -11,6 +11,7 @@ namespace ET
         public const bool RobotBattleCase = true;
 
         public const string BattleSceneName = "Battle";
+        public const string LobbySceneName = "Lobby";
 
         public const int BattleLevelConfigId = 1;
         public const int BattleLevelStartIdx = 0;

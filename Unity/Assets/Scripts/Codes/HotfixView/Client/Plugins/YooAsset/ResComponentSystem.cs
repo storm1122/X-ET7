@@ -239,14 +239,14 @@ namespace ET.Client
             if (!self.SceneOperationHandles.TryGetValue(location, out SceneOperationHandle handle))
             {
                 handle = YooAssets.LoadSceneAsync(location, loadSceneMode, activateOnLoad, priority);
-                self.SceneOperationHandles[location] = handle;
+                // self.SceneOperationHandles[location] = handle; //这里存着的话，第二次加载，下面await handle会是空
             }
 
             if (progressCallback != null)
             {
                 self.HandleProgresses.Add(handle, progressCallback);
             }
-
+           
             await handle;
 
             return handle.SceneObject;

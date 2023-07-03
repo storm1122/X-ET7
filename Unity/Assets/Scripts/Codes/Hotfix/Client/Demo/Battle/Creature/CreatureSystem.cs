@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ET.Client.BattleEvent;
 using TrueSync;
 using Unity.Mathematics;
 
@@ -56,6 +57,8 @@ namespace ET.Client
             var minusHp = dmg;
 
             attr[AttrType.Hp] = math.max(0, hp -= minusHp);
+            
+            EventSystem.Instance.Publish(self.DomainScene(), new Evt_CreatureTakeDamage { Creature = self, Damage = dmg});
 
             if (attr[AttrType.Hp] <= 0)
             {
@@ -79,6 +82,14 @@ namespace ET.Client
                 creature.TakeDamage(99999);
             }
 
+        }
+
+
+        public static void TestSpell2(this Creature self, Creature target)
+        {
+            
+            // target.TakeDamage(self.GetAttr().GetAsLong(AttrType.Atk));
+            target.TakeDamage(1);
         }
 
         public static void Move(this Creature self, FP h, FP v)

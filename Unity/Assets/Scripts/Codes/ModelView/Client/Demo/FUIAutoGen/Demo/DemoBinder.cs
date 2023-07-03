@@ -12,6 +12,8 @@ namespace ET.Client
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Demo.FUI_NormalBtn1.URL, typeof(ET.Client.Demo.FUI_NormalBtn1));
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Demo.FUI_NormalInputField1.URL, typeof(ET.Client.Demo.FUI_NormalInputField1));
 			UIObjectFactory.SetPackageItemExtension(ET.Client.Demo.FUI_DemoEndPanel.URL, typeof(ET.Client.Demo.FUI_DemoEndPanel));
+			UIObjectFactory.SetPackageItemExtension(ET.Client.Demo.FUI_DemoBattleInfo.URL, typeof(ET.Client.Demo.FUI_DemoBattleInfo));
+			UIObjectFactory.SetPackageItemExtension(ET.Client.Demo.FUI_ProgressBar1.URL, typeof(ET.Client.Demo.FUI_ProgressBar1));
 		}
 	}
 }

@@ -117,7 +117,8 @@ namespace ET.Client
         {
             fuiComponent.Restart();
             
-            await fuiComponent.ShowPanelAsync(PanelId.DemoStartPanel);
+            
+            Client.SceneChangeHelper.SceneChangeTo(fuiComponent.ClientScene(), ConstValue.LobbySceneName, 888).Coroutine();
 
             // var uid = IdGenerater.Instance.GenerateInstanceId();
             // await Client.SceneChangeHelper.SceneChangeTo(fuiComponent.ClientScene(), ConstValue.BattleSceneName, uid);

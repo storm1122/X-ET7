@@ -154,6 +154,8 @@
     <component id="i0nf46" name="NormalBtn1.xml" path="/Common/" exported="true"/>
     <component id="i0nf47" name="NormalInputField1.xml" path="/Common/" exported="true"/>
     <component id="i0nf49" name="DemoEndPanel.xml" path="/DemoEnd/" exported="true"/>
+    <component id="i0nf4a" name="DemoBattleInfo.xml" path="/DemoBattleInfo/" exported="true"/>
+    <component id="i0nf4b" name="ProgressBar1.xml" path="/DemoBattleInfo/" exported="true"/>
   </resources>
   <publish name="" path="../Unity/Assets/Bundles/FUI/Demo" packageCount="2"/>
 </packageDescription>

@@ -24,10 +24,10 @@ namespace ET.Client
 
         public static void OnShow(this DemoStartPanel self, Entity contextData = null)
         {
-
-
             self.FUIDemoStartPanel.LvList.numItems = self.CfgList.Count;
             self.FUIDemoStartPanel.LvList.onClickItem.Add(self.OnLvBtnClick);
+            
+            
         }
 
         public static void OnHide(this DemoStartPanel self)
@@ -87,10 +87,7 @@ namespace ET.Client
         private static void EnterBattle(this DemoStartPanel self)
         {
             var uid = IdGenerater.Instance.GenerateInstanceId();
-
-
             Client.SceneChangeHelper.SceneChangeTo(self.ClientScene(), ConstValue.BattleSceneName, uid).Coroutine();
-            self.ClientScene().GetComponent<FUIComponent>().HidePanel(PanelId.DemoStartPanel);
         }
     }
 }

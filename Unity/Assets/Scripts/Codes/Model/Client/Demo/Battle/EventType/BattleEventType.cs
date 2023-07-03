@@ -27,6 +27,12 @@ namespace ET.Client
             public Creature Creature;
         }
         
+        public struct Evt_CreatureTakeDamage : IBattleEvt
+        {
+            public Creature Creature;
+            public long Damage;
+        }
+        
         public struct Evt_ChangePos
         {
             public Creature Creature;

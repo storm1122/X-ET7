@@ -4,6 +4,7 @@
     {
         public static async ETTask SceneChangeTo(Scene clientScene, string sceneName, long sceneInstanceId)
         {
+            var uid = IdGenerater.Instance.GenerateInstanceId();
 
             if (clientScene.GetComponent<BattleData>() == null)
             {
@@ -12,9 +13,10 @@
             
             CurrentScenesComponent currentScenesComponent = clientScene.GetComponent<CurrentScenesComponent>();
             currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的
-            Scene currentScene = SceneFactory.CreateCurrentScene(sceneInstanceId, clientScene.Zone, sceneName, currentScenesComponent);
+            Scene currentScene = SceneFactory.CreateCurrentScene(uid, clientScene.Zone, sceneName, currentScenesComponent);
          
 #if !DOTNET
+            
             // 可以订阅这个事件中创建Loading界面
             await EventSystem.Instance.PublishAsync(clientScene, new EventType.SceneChangeStart());
 #endif

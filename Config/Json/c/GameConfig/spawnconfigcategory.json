@@ -9,9 +9,9 @@
       1003
     ],
     "CreatureCount": [
-      5,
-      5,
-      5
+      1,
+      1,
+      1
     ]
   },
   {
@@ -79,11 +79,9 @@
     "DelayTime": 0,
     "Interval": 0,
     "CreatureIds": [
-      1005,
       1005
     ],
     "CreatureCount": [
-      1,
       1
     ]
   }
