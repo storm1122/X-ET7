@@ -91,7 +91,8 @@ namespace ET.Client
                 await self.DomainScene().GetComponent<CreatureComponent>().GetComponent<ObjectWait>().Wait<Wait_KillAllCampB>();
             }
 
-            if (self.IsDisposed)
+            // 编辑器关闭游戏的时候，会走到上面ObjectWait的DestorySystem，然后在走下来.所以用instanceId判断是否被dispose掉
+            if (self.DomainScene().GetComponent<CreatureComponent>().GetComponent<ObjectWait>().InstanceId == 0 )
             {
                 return;
             }

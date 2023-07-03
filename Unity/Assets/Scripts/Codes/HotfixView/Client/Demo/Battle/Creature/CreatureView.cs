@@ -1,4 +1,5 @@
-﻿using ET.Client.BattleEvent;
+﻿using Cinemachine;
+using ET.Client.BattleEvent;
 using UnityEngine;
 
 namespace ET.Client
@@ -66,6 +67,18 @@ namespace ET.Client
             go.transform.position = new Vector3((float)a.Creature.Position.x, (float)a.Creature.Position.y, (float)a.Creature.Position.z);
             
             view.GameObject = go;
+
+            if (create.Config.Type == CreatureType.Role)
+            {
+                go.name = "Role";
+                
+                var vcamObj = GameObject.Find("CM vcam1");
+                
+                CinemachineVirtualCameraBase vcam = vcamObj.GetComponent<CinemachineVirtualCameraBase>();
+                
+                vcam.Follow = go.transform;
+                
+            }
 
 
             await ETTask.CompletedTask;
