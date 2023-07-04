@@ -1,0 +1,50 @@
+[
+  {
+    "Id": 1001,
+    "Name": "",
+    "DropConfigScript": [
+      1
+    ],
+    "Arg": [
+      [
+        10
+      ]
+    ]
+  },
+  {
+    "Id": 1002,
+    "Name": "",
+    "DropConfigScript": [
+      2
+    ],
+    "Arg": [
+      [
+        5
+      ]
+    ]
+  },
+  {
+    "Id": 1003,
+    "Name": "",
+    "DropConfigScript": [
+      1,
+      2
+    ],
+    "Arg": [
+      [
+        5
+      ],
+      [
+        5
+      ]
+    ]
+  },
+  {
+    "Id": 1004,
+    "Name": "",
+    "DropConfigScript": [
+      0
+    ],
+    "Arg": []
+  }
+]

@@ -12,20 +12,20 @@ namespace ET
 {
    
 [Config]
-public partial class FootHoldCategory: ConfigSingleton<FootHoldCategory>
+public partial class BattleDropConfigCatefory: ConfigSingleton<BattleDropConfigCatefory>
 {
-    private readonly Dictionary<int, FootHoldConfig> _dataMap;
-    private readonly List<FootHoldConfig> _dataList;
+    private readonly Dictionary<int, BattleDropConfig> _dataMap;
+    private readonly List<BattleDropConfig> _dataList;
     
-    public FootHoldCategory(ByteBuf _buf)
+    public BattleDropConfigCatefory(ByteBuf _buf)
     {
-        _dataMap = new Dictionary<int, FootHoldConfig>();
-        _dataList = new List<FootHoldConfig>();
+        _dataMap = new Dictionary<int, BattleDropConfig>();
+        _dataList = new List<BattleDropConfig>();
         
         for(int n = _buf.ReadSize() ; n > 0 ; --n)
         {
-            FootHoldConfig _v;
-            _v = FootHoldConfig.DeserializeFootHoldConfig(_buf);
+            BattleDropConfig _v;
+            _v = BattleDropConfig.DeserializeBattleDropConfig(_buf);
             _dataList.Add(_v);
             _dataMap.Add(_v.Id, _v);
         }
@@ -37,16 +37,16 @@ public partial class FootHoldCategory: ConfigSingleton<FootHoldCategory>
         return _dataMap.ContainsKey(id);
     }
 
-    public Dictionary<int, FootHoldConfig> GetAll()
+    public Dictionary<int, BattleDropConfig> GetAll()
     {
         return _dataMap;
     }
     
-    public List<FootHoldConfig> DataList => _dataList;
+    public List<BattleDropConfig> DataList => _dataList;
 
-    public FootHoldConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
-    public FootHoldConfig Get(int key) => _dataMap[key];
-    public FootHoldConfig this[int key] => _dataMap[key];
+    public BattleDropConfig GetOrDefault(int key) => _dataMap.TryGetValue(key, out var v) ? v : null;
+    public BattleDropConfig Get(int key) => _dataMap[key];
+    public BattleDropConfig this[int key] => _dataMap[key];
 
     public override void Resolve(Dictionary<string, IConfigSingleton> _tables)
     {
@@ -74,7 +74,7 @@ public partial class FootHoldCategory: ConfigSingleton<FootHoldCategory>
     
     public override string ConfigName()
     {
-        return typeof(FootHoldConfig).Name;
+        return typeof(BattleDropConfig).Name;
     }
     
     partial void PostInit();

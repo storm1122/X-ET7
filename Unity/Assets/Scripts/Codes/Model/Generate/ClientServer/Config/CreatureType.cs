@@ -28,6 +28,10 @@ namespace ET
         /// boss
         /// </summary>
         Boss = 3,
+        /// <summary>
+        /// 宝箱
+        /// </summary>
+        Treasure = 4,
     }
 
 } 
