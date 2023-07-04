@@ -19,6 +19,7 @@ namespace ET
         public const int RoleCreatureId = 8001;
 
         public const float AtkRange = 2;
+        public const float DropRange = 1;
         
         public const int SpawnMaxRadius = 30;
         public const int SpawnMinRadius = 20;

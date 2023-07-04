@@ -50,7 +50,7 @@ namespace ET.Client
             var target = CreatureHelper.GetRole(currentScene);
 
             
-            Log.Debug("开始巡逻");
+            // Log.Debug("开始巡逻");
 
             while (true)
             {

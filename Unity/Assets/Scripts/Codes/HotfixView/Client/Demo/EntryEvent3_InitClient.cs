@@ -128,6 +128,8 @@ namespace ET.Client
             // contextData.Data = "界面参数测试";
             // // 显示登录界面, 并传递参数contextData
             // await fuiComponent.ShowPanelAsync(PanelId.LoginPanel, contextData);
+
+            await ETTask.CompletedTask;
         }
     }
 }

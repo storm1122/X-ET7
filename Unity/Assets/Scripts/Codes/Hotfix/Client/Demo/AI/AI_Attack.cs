@@ -42,7 +42,7 @@ namespace ET.Client
             creature.MoveStop();
             
             
-            Log.Debug("开始攻击");
+            // Log.Debug("开始攻击");
             
             
             var target = CreatureHelper.GetRole(currentScene);
@@ -57,7 +57,7 @@ namespace ET.Client
                     continue;
                 }
                 
-                Log.Debug($"攻击: {i}次");
+                // Log.Debug($"攻击: {i}次");
 
                 // 因为协程可能被中断，任何协程都要传入cancellationToken，判断如果是中断则要返回
                 

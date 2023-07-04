@@ -40,7 +40,7 @@ namespace ET.Client
         {
         }
     }
-
+    [FriendOfAttribute(typeof(ET.Client.Creature))]
     public static class CreatureSystem
     {
         public static AttrComponent GetAttr(this Creature self)
@@ -57,8 +57,8 @@ namespace ET.Client
             var minusHp = dmg;
 
             attr[AttrType.Hp] = math.max(0, hp -= minusHp);
-            
-            EventSystem.Instance.Publish(self.DomainScene(), new Evt_CreatureTakeDamage { Creature = self, Damage = dmg});
+
+            EventSystem.Instance.Publish(self.DomainScene(), new Evt_CreatureTakeDamage { Creature = self, Damage = dmg });
 
             if (attr[AttrType.Hp] <= 0)
             {
@@ -66,9 +66,35 @@ namespace ET.Client
             }
         }
 
-        public static void Dead(this Creature self)
+        private static void Dead(this Creature self)
         {
+            self.DropScript1();
+            
             self.GetParent<CreatureComponent>().CreatureDead(self);
+    
+        }
+
+        public static void DropScript1(this Creature self)
+        {
+            if (self.Config.DropScript != 1)
+            {
+                return;
+            }
+            //检查参数
+            if (self.Config.DropArg.Count != 2)
+            {
+                Log.Error($"掉落脚本与参数不对，CreatureId:{self.ConfigId}");
+                return;
+            }
+
+            var r = self.Config.DropArg[1];
+
+            var r10000 = self.DomainScene().GetComponent<BattleRandom>().Random10000();
+            
+            if (r > r10000)
+            {
+                self.DomainScene().GetComponent<DropComponent>().Create(self.Config.DropArg[0], self.Position);
+            }
         }
 
         public static void TestSpell1(this Creature self)
@@ -87,7 +113,7 @@ namespace ET.Client
 
         public static void TestSpell2(this Creature self, Creature target)
         {
-            
+
             // target.TakeDamage(self.GetAttr().GetAsLong(AttrType.Atk));
             target.TakeDamage(1);
         }
@@ -95,7 +121,7 @@ namespace ET.Client
         public static void Move(this Creature self, FP h, FP v)
         {
             TSVector targetPos = self.Position + new TSVector(h, 0, v);
-            
+
             List<TSVector> list = new List<TSVector>();
             list.Add(self.Position);
             list.Add(targetPos);
@@ -109,7 +135,7 @@ namespace ET.Client
             list.Add(target.Position);
             await self.GetComponent<MoveComponent>().MoveToAsync(list, self.GetAttr().GetAsLong(AttrType.MoveSpeed));
         }
-        
+
         public static void MoveStop(this Creature self)
         {
             self.GetComponent<MoveComponent>().Stop(true);
@@ -120,7 +146,7 @@ namespace ET.Client
             float val = (float)self;
             return val;
         }
-        
+
         public static void Set(this TSVector self, float3 val)
         {
             self = new TSVector(val.x, val.y, val.z);
@@ -130,7 +156,7 @@ namespace ET.Client
         {
             self = new TSQuaternion(val.value.x, val.value.y, val.value.z, val.value.w);
         }
-        
+
         public static float3 ToFloat3(this TSVector self)
         {
             var val = new float3((float)self.x, (float)self.y, (float)self.z);
@@ -141,8 +167,8 @@ namespace ET.Client
             var val = new quaternion((float)self.x, (float)self.y, (float)self.z, (float)self.w);
             return val;
         }
-        
+
     }
-    
-    
+
+
 }
