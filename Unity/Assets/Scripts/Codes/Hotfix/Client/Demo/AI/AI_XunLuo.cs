@@ -48,31 +48,27 @@ namespace ET.Client
             var creature = aiComponent.GetParent<Creature>();
 
             var target = CreatureHelper.GetRole(currentScene);
-
             
             // Log.Debug("开始巡逻");
+            var targetInstanceId = target.InstanceId;
 
             while (true)
-            {
-                if (target != null)
+            {   
+                
+                if (targetInstanceId != target.InstanceId)
                 {
-                    await creature.MoveToTarget(target);
+                    continue;
                 }
+                
+                // await creature.MoveToTarget(target);
+                creature.MoveToTarget(target).Coroutine();
+                
+                await TimerComponent.Instance.WaitAsync(1000, cancellationToken);
+                
                 if (cancellationToken.IsCancel())
                 {
                     return;
                 }
-                
-                if (target == null)
-                {
-                    return;
-                }
-
-
-                // if (TSVector.Distance(target.Position, creature.Position) < ConstValue.AtkRange)
-                // {
-                //     return;
-                // }
             }
         }
     }
