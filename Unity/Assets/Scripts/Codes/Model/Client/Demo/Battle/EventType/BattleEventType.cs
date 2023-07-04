@@ -22,6 +22,17 @@ namespace ET.Client
         {
             public Creature Creature;
         }
+       
+        public struct Evt_RemoveCreature : IBattleEvt
+        {
+            public Creature Creature;
+        }
+
+        public struct Evt_CreateFootHold
+        {
+            public FootHold FootHold;
+        }
+        
         public struct Evt_CreateDrop : IBattleEvt
         {
             public Drop Drop;
@@ -29,10 +40,6 @@ namespace ET.Client
         public struct Evt_RmoveDrop : IBattleEvt
         {
             public Drop Drop;
-        }
-        public struct Evt_RemoveCreature : IBattleEvt
-        {
-            public Creature Creature;
         }
         
         public struct Evt_CreatureTakeDamage : IBattleEvt

@@ -10,6 +10,7 @@ namespace ET.Client
         A,
         B,
     }
+
     
     [ChildOf(typeof(CreatureComponent))]
     public class Creature : Entity , IAwake<int>, IDestroy
@@ -57,7 +58,8 @@ namespace ET.Client
         {
             get => this.GetComponent<AttrComponent>()[AttrType.Hp] > 0;
         }
-        
+
+       
     }
     
 }

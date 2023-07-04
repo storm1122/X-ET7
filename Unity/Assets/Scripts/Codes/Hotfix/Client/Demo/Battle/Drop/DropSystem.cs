@@ -17,7 +17,6 @@ namespace ET.Client
     {
         protected override void Destroy(Drop self)
         {
-            EventSystem.Instance.Publish(self.DomainScene(), new Evt_CreateDrop { Drop = self });
         }
     }
 

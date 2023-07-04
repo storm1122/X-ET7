@@ -11,7 +11,7 @@ namespace ET.Client
         public int Idx;
         public TSVector MoveDir;
     }
- 
+
     
     [ChildOf(typeof(CreatureViewComponent))]
     public class CreatureView : Entity, IAwake, IDestroy

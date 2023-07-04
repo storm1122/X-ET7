@@ -12,6 +12,8 @@ namespace ET.Client
         protected override async ETTask Run(Scene currentScene, Evt_SceneAwake a)
         {
             currentScene.AddComponent<CreatureViewComponent>();
+            currentScene.AddComponent<DropViewComponent>();
+            currentScene.AddComponent<FootHoldViewComponent>();
             
             await ETTask.CompletedTask;
         }
