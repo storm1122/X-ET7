@@ -1,4 +1,5 @@
 ﻿using TrueSync;
+using Unity.Mathematics;
 
 namespace ET.Client
 {
@@ -45,6 +46,8 @@ namespace ET.Client
         }
 
 
+      
+        
         public static async ETTask Spawn(this SpawnComponent self)
         {
             var creatureComponent = self.DomainScene().GetComponent<CreatureComponent>();
@@ -53,13 +56,22 @@ namespace ET.Client
                 Log.Error($"CreatureComponent is null");
                 return;
             }
-
+            
             if (self.Config.CreatureIds.Count != self.Config.CreatureCount.Count)
             {
                 Log.Error($"SpawnConfig中，数量配置不正确，Id：{self.ConfigId}");
                 return;
             }
 
+            var spawnPosComponent = self.DomainScene().GetComponent<SpawnPosComponent>();
+            if (spawnPosComponent == null)
+            {
+                spawnPosComponent = self.DomainScene().AddComponent<SpawnPosComponent,int>(1);
+            }
+            var role = CreatureHelper.GetRole(self.DomainScene());
+            
+            
+            
             for (int i = 0; i < self.Config.CreatureIds.Count; i++)
             {
                 var creatureId = self.Config.CreatureIds[i];
@@ -74,13 +86,20 @@ namespace ET.Client
 
                 for (int j = 0; j < spawnCount; j++)
                 {
+
+                    if (role.IsDisposed)
+                    {
+                        return;
+                    }
+                    
                     var creature = self.DomainScene().GetComponent<CreatureComponent>().CreateCreature(creatureId, Camp.B);
 
                     // todo 设置初始位置
-
-                    var list = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
-
-                    creature.Position = new TSVector(-5, 0, list.Count * 2);
+                    creature.Position = spawnPosComponent.Circle(role.Position, ConstValue.SpawnMinRadius, ConstValue.SpawnMaxRadius);
+                    //
+                    // var list = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
+                    //
+                    // creature.Position = new TSVector(-5, 0, list.Count * 2);
                     
                     creature.AddComponent<AIComponent, int>(1);
 

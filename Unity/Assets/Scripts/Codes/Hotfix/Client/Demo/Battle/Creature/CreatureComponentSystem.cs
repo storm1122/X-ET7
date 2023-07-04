@@ -42,6 +42,13 @@ namespace ET.Client
 
         public static void CreatureDead(this CreatureComponent self, Creature creature)
         {
+            if (creature.CreatureType == CreatureType.Role)
+            {
+                EventSystem.Instance.Publish(self.DomainScene(), new Evt_BattleEnd { });
+                return;
+            }
+            
+            
             EventSystem.Instance.Publish(self.DomainScene(), new Evt_RemoveCreature { Creature = creature });
             creature.Dispose();
 
@@ -50,6 +57,8 @@ namespace ET.Client
             {
                 self.GetComponent<ObjectWait>().Notify(new Wait_KillAllCampB());
             }
+            
+            
 
         }
         
