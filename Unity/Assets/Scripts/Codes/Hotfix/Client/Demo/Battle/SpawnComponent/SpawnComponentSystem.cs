@@ -100,8 +100,11 @@ namespace ET.Client
                     // var list = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
                     //
                     // creature.Position = new TSVector(-5, 0, list.Count * 2);
-                    
-                    creature.AddComponent<AIComponent, int>(1);
+
+                    if (creature.CreatureType != CreatureType.Treasure)
+                    {
+                        creature.AddComponent<AIComponent, int>(1);
+                    }
 
                     // todo 追踪组件
                 }

@@ -1,5 +1,4 @@
-﻿using ET.Client.BattleEvent;
-using TrueSync;
+﻿using TrueSync;
 using Unity.Mathematics;
 
 namespace ET.Client

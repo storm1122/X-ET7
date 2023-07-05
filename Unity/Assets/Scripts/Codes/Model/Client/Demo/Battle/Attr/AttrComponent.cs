@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using ET.Client;
 using TrueSync;
 
-namespace ET
+namespace ET.Client
 {
     [FriendOf(typeof (AttrComponent))]
     public static class AttrComponentSystem
@@ -50,7 +49,7 @@ namespace ET
                 return;
             }
 
-            self.NumericDic[attrType] = value;
+            self.AttrDic[attrType] = value;
 
             if (attrType >= AttrType.Max)
             {
@@ -60,15 +59,15 @@ namespace ET
 
             if (isPublicEvent)
             {
-                // EventSystem.Instance.Publish(self.DomainScene(),
-                //     new EventType.NumbericChange() { Unit = self.GetParent<Unit>(), New = value, Old = oldValue, NumericType = attrType });
+                EventSystem.Instance.Publish(self.DomainScene(),
+                    new AttrChange() { Creature = self.GetParent<Creature>(), New = value, Old = oldValue, AttrType = attrType });
             }
         }
 
         public static long GetByKey(this AttrComponent self, int key)
         {
             long value = 0;
-            self.NumericDic.TryGetValue(key, out value);
+            self.AttrDic.TryGetValue(key, out value);
             return value;
         }
 
@@ -89,21 +88,18 @@ namespace ET
         }
     }
     
-    namespace BattleEvent
+    public struct AttrChange
     {
-        public struct NumbericChange
-        {
-            public Creature Creature;
-            public int AttrType;
-            public long Old;
-            public long New;
-        }
+        public Creature Creature;
+        public int AttrType;
+        public long Old;
+        public long New;
     }
 
     [ComponentOf(typeof (Creature))]
     public class AttrComponent: Entity, IAwake, ITransfer
     {
-        public Dictionary<int, long> NumericDic = new Dictionary<int, long>();
+        public Dictionary<int, long> AttrDic = new Dictionary<int, long>();
 
         public long this[int attrType]
         {
@@ -115,6 +111,16 @@ namespace ET
             {
                 this.Insert(attrType, value);
             }
+        }
+    }
+    
+    [Event(SceneType.All)]
+    public class NumericChangeEvent_NotifyWatcher2: AEvent<Scene, AttrChange>
+    {
+        protected override async ETTask Run(Scene scene, AttrChange args)
+        {
+            AttrWatcherComponent.Instance.Run(args.Creature, args);
+            await ETTask.CompletedTask;
         }
     }
 }

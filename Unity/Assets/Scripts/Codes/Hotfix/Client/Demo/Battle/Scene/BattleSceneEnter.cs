@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using ET.Client.BattleEvent;
+
 using ET.EventType;
 
 namespace ET.Client

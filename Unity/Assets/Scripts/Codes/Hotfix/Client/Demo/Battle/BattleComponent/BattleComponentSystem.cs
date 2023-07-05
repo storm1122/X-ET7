@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ET.Client.BattleEvent;
 using TrueSync;
 
 namespace ET.Client
@@ -42,6 +41,8 @@ namespace ET.Client
             var currentScene = self.DomainScene();
             self.BattleState = BattleState.Awake;
 
+            
+            currentScene.AddComponent<AttrWatcherComponent>();
             currentScene.AddComponent<BattleRandom,int>(1);
             currentScene.AddComponent<DropComponent>();
 

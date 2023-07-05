@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using ET.Client.BattleEvent;
+
 using ET.EventType;
 using TrueSync;
 
@@ -19,7 +19,7 @@ namespace ET.Client
                 return;
             }
             
-            EventSystem.Instance.Publish(currentScene, new BattleEvent.Evt_SceneAwake());
+            EventSystem.Instance.Publish(currentScene, new Evt_SceneAwake());
 
             await ETTask.CompletedTask;
         }

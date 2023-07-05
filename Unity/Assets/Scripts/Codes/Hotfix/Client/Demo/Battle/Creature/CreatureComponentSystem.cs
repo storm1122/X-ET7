@@ -1,5 +1,4 @@
-﻿using ET.Client.BattleEvent;
-
+﻿
 namespace ET.Client
 {
     [ObjectSystem]
@@ -57,9 +56,6 @@ namespace ET.Client
             {
                 self.GetComponent<ObjectWait>().Notify(new Wait_KillAllCampB());
             }
-            
-            
-
         }
         
     }

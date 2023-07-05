@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ET.Client;
-using ET.Client.BattleEvent;
+
 using TrueSync;
 using Unity.Mathematics;
 

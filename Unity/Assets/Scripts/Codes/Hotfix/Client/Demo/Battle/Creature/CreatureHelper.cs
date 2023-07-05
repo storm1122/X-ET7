@@ -5,7 +5,7 @@ namespace ET.Client
     [FriendOfAttribute(typeof(ET.Client.Creature))]
     public static class CreatureHelper
     {
-        public static Creature GetCaster(Scene currentScene)
+        public static Creature GetCastle(Scene currentScene)
         {
             return currentScene.GetComponent<CreatureComponent>()?.Castle;
         }

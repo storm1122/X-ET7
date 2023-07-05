@@ -27,6 +27,10 @@ namespace ET
         /// 半径
         /// </summary>
         Radius = 1004,
+        /// <summary>
+        /// 能量
+        /// </summary>
+        Power = 10002,
     }
 
 } 

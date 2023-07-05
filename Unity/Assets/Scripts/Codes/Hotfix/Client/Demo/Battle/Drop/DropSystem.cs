@@ -1,4 +1,4 @@
-﻿using ET.Client.BattleEvent;
+﻿
 using TrueSync;
 
 namespace ET.Client
@@ -41,6 +41,8 @@ namespace ET.Client
             EventSystem.Instance.Publish(self.DomainScene(), new Evt_CreateDrop { Drop = self });
         }
 
+        
+        //todo 这里存在环形依赖
         public static void PickUp(this Drop self)
         {
             var idx = 0;
@@ -49,11 +51,15 @@ namespace ET.Client
                 var arg = self.Config.Arg[idx];
                 if (script == DropConfigScript.Exp)
                 {
-                    Log.Console("拾取金币");
+                    var role = CreatureHelper.GetRole(self.DomainScene());
+                    role.GetAttr()[AttrType.Exp] += arg[0];
+                    Log.Console($"经验:{role.GetAttr()[AttrType.Exp]}");
                 }
                 else if (script == DropConfigScript.Power)
                 {
-                    Log.Console("拾取能量");
+                    var role = CreatureHelper.GetRole(self.DomainScene());
+                    role.GetAttr()[AttrType.Power] += arg[0];
+                    Log.Console($"能量:{role.GetAttr()[AttrType.Power]}");
                 }
                 idx++;
             }

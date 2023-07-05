@@ -22,7 +22,52 @@
       ]
     ],
     "DropScript": 0,
-    "DropArg": []
+    "DropArg": [],
+    "PowerSpeed": [
+      20,
+      50,
+      100
+    ],
+    "PowerSpeedVal": [
+      5,
+      10,
+      15
+    ]
+  },
+  {
+    "Id": 9002,
+    "Type": 0,
+    "Name": "充值城堡1",
+    "Attrs": [
+      [
+        1002,
+        200
+      ],
+      [
+        1001,
+        500
+      ],
+      [
+        1003,
+        15
+      ],
+      [
+        1004,
+        5000
+      ]
+    ],
+    "DropScript": 0,
+    "DropArg": [],
+    "PowerSpeed": [
+      20,
+      50,
+      100
+    ],
+    "PowerSpeedVal": [
+      7,
+      12,
+      17
+    ]
   },
   {
     "Id": 8001,
@@ -47,7 +92,36 @@
       ]
     ],
     "DropScript": 0,
-    "DropArg": []
+    "DropArg": [],
+    "PowerSpeed": [],
+    "PowerSpeedVal": []
+  },
+  {
+    "Id": 8002,
+    "Type": 1,
+    "Name": "充值小人1",
+    "Attrs": [
+      [
+        1002,
+        200
+      ],
+      [
+        1001,
+        300
+      ],
+      [
+        1003,
+        15
+      ],
+      [
+        1004,
+        5000
+      ]
+    ],
+    "DropScript": 0,
+    "DropArg": [],
+    "PowerSpeed": [],
+    "PowerSpeedVal": []
   },
   {
     "Id": 1003,
@@ -73,9 +147,11 @@
     ],
     "DropScript": 1,
     "DropArg": [
-      1001,
-      10000
-    ]
+      1003,
+      5000
+    ],
+    "PowerSpeed": [],
+    "PowerSpeedVal": []
   },
   {
     "Id": 1004,
@@ -101,9 +177,11 @@
     ],
     "DropScript": 1,
     "DropArg": [
-      1002,
-      5000
-    ]
+      1003,
+      10000
+    ],
+    "PowerSpeed": [],
+    "PowerSpeedVal": []
   },
   {
     "Id": 1005,
@@ -131,7 +209,9 @@
     "DropArg": [
       1003,
       10000
-    ]
+    ],
+    "PowerSpeed": [],
+    "PowerSpeedVal": []
   },
   {
     "Id": 7001,
@@ -151,6 +231,8 @@
     "DropArg": [
       1003,
       10000
-    ]
+    ],
+    "PowerSpeed": [],
+    "PowerSpeedVal": []
   }
 ]

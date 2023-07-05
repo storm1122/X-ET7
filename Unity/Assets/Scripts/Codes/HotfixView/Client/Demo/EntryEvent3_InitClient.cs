@@ -11,6 +11,8 @@ namespace ET.Client
             Root.Instance.Scene.AddComponent<GlobalComponent>();
             
             Root.Instance.Scene.AddComponent<FsmDispatcherComponent>();
+            
+            
 
             Scene clientScene = await SceneFactory.CreateClientScene(1, "Game");
 

@@ -4,14 +4,23 @@
     public static class AttrType
     {
         public const int Max = 10000;
-        public const int Hp = 10001;
+        
+        
+        public const int Hp = 9001;
+        public const int HpBase = Hp * 10 + 1;
+        
+        public const int Power = 9002;
+        public const int PowerBase = Power * 10 + 1;
+        
+        public const int Exp = 9003;
+        public const int ExpBase = Exp * 10 + 1;
         
         public const int MoveSpeed = (int)EnAttr.MoveSpeed;
-        public const int SpeedBase = MoveSpeed * 10 + 1;
-        public const int SpeedAdd = MoveSpeed * 10 + 2;
-        public const int SpeedPct = MoveSpeed * 10 + 3;
-        public const int SpeedFinalAdd = MoveSpeed * 10 + 4;
-        public const int SpeedFinalPct = MoveSpeed * 10 + 5;
+        public const int MoveSpeedBase = MoveSpeed * 10 + 1;
+        public const int MoveSpeedAdd = MoveSpeed * 10 + 2;
+        public const int MoveSpeedPct = MoveSpeed * 10 + 3;
+        public const int MoveSpeedFinalAdd = MoveSpeed * 10 + 4;
+        public const int MoveSpeedFinalPct = MoveSpeed * 10 + 5;
 
         public const int MaxHp = (int)EnAttr.MaxHp;
         public const int MaxHpBase = MaxHp * 10 + 1;

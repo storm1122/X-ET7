@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using ET.Client.BattleEvent;
+
 using TrueSync;
 
 namespace ET.Client
@@ -21,7 +21,7 @@ namespace ET.Client
                 return;
             }
 
-            if (a.Creature.InstanceId != CreatureHelper.GetCaster(scene)?.InstanceId)
+            if (a.Creature.InstanceId != CreatureHelper.GetCastle(scene)?.InstanceId)
             {
                 return;
             }

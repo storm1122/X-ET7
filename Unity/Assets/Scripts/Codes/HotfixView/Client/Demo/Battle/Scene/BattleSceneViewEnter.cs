@@ -5,9 +5,9 @@ namespace ET.Client
 {
 
     [Event(SceneType.Current)]
-    public class BattleSceneViewEnter : AEvent<Scene, BattleEvent.Evt_SceneEnter>
+    public class BattleSceneViewEnter : AEvent<Scene, Evt_SceneEnter>
     {
-        protected override async ETTask Run(Scene currentScene, BattleEvent.Evt_SceneEnter a)
+        protected override async ETTask Run(Scene currentScene, Evt_SceneEnter a)
         {
             currentScene.GetComponent<FUIComponent>().ShowPanelAsync(PanelId.DemoBattleInfo).Coroutine();  
             

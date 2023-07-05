@@ -4,6 +4,7 @@ using TrueSync;
 namespace ET.Client
 {
     [FriendOfAttribute(typeof(ET.Client.FootHoldComponent))]
+    [FriendOfAttribute(typeof(ET.Client.Creature))]
     public static class MoveCastle
     {
         public static void StartMove(Scene scene)
@@ -30,7 +31,7 @@ namespace ET.Client
                 Log.Console("到达最后一个据点， 无法继续移动城堡");
                 return;
             }
-            
+
             int x = footHoldComponent.Config.PosXList[i];
             int y = footHoldComponent.Config.PosYList[i];
             int z = footHoldComponent.Config.PosZList[i];
@@ -38,9 +39,11 @@ namespace ET.Client
             List<TSVector> list = new List<TSVector>();
             list.Add(castle.Position);
             list.Add(new TSVector(x, y, z));
-            Log.Console($"设置下一个路径 {new TSVector(x, y, z).ToString()}");
-           
-            move.MoveToAsync(list, castle.GetAttr().GetAsLong(AttrType.MoveSpeed)).Coroutine();
+            // Log.Console($"设置下一个路径 {new TSVector(x, y, z).ToString()}");
+
+
+            var speed = castle.GetCastleSpeed();
+            move.MoveToAsync(list, speed).Coroutine();
         }
 
         public static void StopMove(Scene scene)

@@ -1,5 +1,5 @@
 ﻿using Cinemachine;
-using ET.Client.BattleEvent;
+
 using UnityEngine;
 
 namespace ET.Client

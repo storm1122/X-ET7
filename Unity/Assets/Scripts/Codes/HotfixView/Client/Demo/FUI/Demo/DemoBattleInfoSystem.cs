@@ -1,11 +1,11 @@
-using ET.Client.BattleEvent;
+
 
 namespace ET.Client
 { 
 	[Event(SceneType.Current)]
-	public class UICreatureTakeDamageHandler : AEvent<Scene, BattleEvent.Evt_CreatureTakeDamage>
+	public class UICreatureTakeDamageHandler : AEvent<Scene, Evt_CreatureTakeDamage>
 	{
-		protected override async ETTask Run(Scene currentScene, BattleEvent.Evt_CreatureTakeDamage a)
+		protected override async ETTask Run(Scene currentScene, Evt_CreatureTakeDamage a)
 		{
 			DemoBattleInfo logic = currentScene.GetComponent<FUIComponent>().GetPanelLogic<DemoBattleInfo>();
 

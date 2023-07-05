@@ -1,4 +1,4 @@
-﻿using ET.Client.BattleEvent;
+﻿
 
 namespace ET.Client
 {

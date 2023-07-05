@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using ET.Client.BattleEvent;
 using TrueSync;
 using Unity.Mathematics;
 

@@ -10,7 +10,7 @@ namespace ET.Client
         {
             if (Input.GetKeyUp(KeyCode.Q))
             {
-                CreatureHelper.GetCaster(self.DomainScene()).TestSpell1();
+                CreatureHelper.GetCastle(self.DomainScene()).TestSpell1();
             }
         }
     }
