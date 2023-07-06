@@ -637,6 +637,143 @@ namespace ET
                 }
             }
         }
+        
+        public void SpellAdd(Entity componentParent)
+        {
+            Queue<long> queue = this.queues[InstanceQueueIndex.SpellAdd];
+            int count = queue.Count;
+            while (count-- > 0)
+            {
+                long instanceId = queue.Dequeue();
+                Entity component = Root.Instance.Get(instanceId);
+                if (component == null)
+                {
+                    continue;
+                }
+
+                if (component.IsDisposed)
+                {
+                    continue;
+                }
+
+                if (component.Parent.Id != componentParent.Id)
+                {
+                    continue;
+                }
+
+                List<object> ispellSystems = this.typeSystems.GetSystems(component.GetType(), typeof (ISpellAddSystem));
+                if (ispellSystems == null)
+                {
+                    continue;
+                }
+
+                queue.Enqueue(instanceId);
+
+                foreach (ISpellAddSystem iSpellSystem in ispellSystems)
+                {
+                    // try
+                    {
+                        iSpellSystem.Run(component);
+                    }
+                    // catch (Exception e)
+                    // {
+                    //     Log.Error(e);
+                    // }
+                }
+            }
+        }
+        
+        public void SpellLaunch(Entity componentParent)
+        {
+            Queue<long> queue = this.queues[InstanceQueueIndex.SpellLaunch];
+            int count = queue.Count;
+            while (count-- > 0)
+            {
+                long instanceId = queue.Dequeue();
+                Entity component = Root.Instance.Get(instanceId);
+                if (component == null)
+                {
+                    continue;
+                }
+
+                if (component.IsDisposed)
+                {
+                    continue;
+                }
+
+                if (component.Parent.Id != componentParent.Id)
+                {
+                    continue;
+                }
+
+                List<object> ispellSystems = this.typeSystems.GetSystems(component.GetType(), typeof (ISpellLaunchSystem));
+                if (ispellSystems == null)
+                {
+                    continue;
+                }
+
+                queue.Enqueue(instanceId);
+
+                foreach (ISpellLaunchSystem iSpellSystem in ispellSystems)
+                {
+                    // try
+                    {
+                        iSpellSystem.Run(component);
+                    }
+                    // catch (Exception e)
+                    // {
+                    //     Log.Error(e);
+                    // }
+                }
+            }
+        }
+        
+        
+        public void SpellRemove(Entity componentParent)
+        {
+            Queue<long> queue = this.queues[InstanceQueueIndex.SpellRemove];
+            int count = queue.Count;
+            while (count-- > 0)
+            {
+                long instanceId = queue.Dequeue();
+                Entity component = Root.Instance.Get(instanceId);
+                if (component == null)
+                {
+                    continue;
+                }
+
+                if (component.IsDisposed)
+                {
+                    continue;
+                }
+
+                if (component.Parent.Id != componentParent.Id)
+                {
+                    continue;
+                }
+
+                List<object> ispellSystems = this.typeSystems.GetSystems(component.GetType(), typeof (ISpellRemoveSystem));
+                if (ispellSystems == null)
+                {
+                    continue;
+                }
+
+                queue.Enqueue(instanceId);
+
+                foreach (ISpellRemoveSystem iSpellSystem in ispellSystems)
+                {
+                    // try
+                    {
+                        iSpellSystem.Run(component);
+                    }
+                    // catch (Exception e)
+                    // {
+                    //     Log.Error(e);
+                    // }
+                }
+            }
+        }
+
 
         public async ETTask PublishAsync<S, T>(S scene, T a) where S: class, IScene where T : struct
         {

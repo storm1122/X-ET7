@@ -6,6 +6,17 @@
         protected override void Awake(Spell self, int configId)
         {
             self.ConfigId = configId;
+
+            if (configId == 1)
+            {
+                Log.Error("AddChild<Script_AddAttr>");
+                self.AddChild<Script_AddAttr>();
+            }
+            else
+            {
+                Log.Error("AddChild<Script_Nromal1>");
+                self.AddChild<Script_Nromal1>();
+            }
         }
     }
 
@@ -14,7 +25,6 @@
     {
         protected override void Destroy(Spell self)
         {
-            self.Owner = null;
         }
     }
 
@@ -30,6 +40,8 @@
         {
             self.Owner = owner;
 
+            Log.Error("Spell.OnAdd");
+            EventSystem.Instance.SpellAdd(self);
             EventSystem.Instance.Publish(self.DomainScene(), new Evt_Spell_OnAdd { Spell = self });
 
         }

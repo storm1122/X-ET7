@@ -22,7 +22,14 @@
     }
 
     [ChildOf(typeof(Spell))]
-    public class Script_AddAttr: Entity, IAwake, IDestroy, IUpdate
+    public class Script_AddAttr: Entity, IAwake, IDestroy, IUpdate, ISpellAdd
     {
+        public int testid;
+    }
+    
+    [ChildOf(typeof(Spell))]
+    public class Script_Nromal1: Entity, IAwake, IDestroy, IUpdate, ISpellAdd
+    {
+        public int testid;
     }
 }

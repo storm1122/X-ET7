@@ -31,6 +31,7 @@ namespace ET.Client
 
             self.AddComponent<SpellComponent>();
 
+            self.AddSpell();
         }
     }
 
@@ -107,6 +108,7 @@ namespace ET.Client
             }
 
             var spellComponent = self.GetComponent<SpellComponent>();
+            Log.Error("add spell 1 ");
             spellComponent.Add(1, self);
 
         }

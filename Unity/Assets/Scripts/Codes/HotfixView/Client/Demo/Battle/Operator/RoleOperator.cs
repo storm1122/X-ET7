@@ -12,6 +12,15 @@ namespace ET.Client
             {
                 CreatureHelper.GetCastle(self.DomainScene()).TestSpell1();
             }
+
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                var role = CreatureHelper.GetCastle(self.DomainScene());
+                
+                var spellComponent = role.GetComponent<SpellComponent>();
+                Log.Error("add spell 2 ");
+                spellComponent.Add(2, role);
+            }
         }
     }
     
