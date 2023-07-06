@@ -32,7 +32,8 @@
       5,
       10,
       15
-    ]
+    ],
+    "SpellIds": []
   },
   {
     "Id": 9002,
@@ -67,7 +68,8 @@
       7,
       12,
       17
-    ]
+    ],
+    "SpellIds": []
   },
   {
     "Id": 8001,
@@ -94,7 +96,10 @@
     "DropScript": 0,
     "DropArg": [],
     "PowerSpeed": [],
-    "PowerSpeedVal": []
+    "PowerSpeedVal": [],
+    "SpellIds": [
+      1001
+    ]
   },
   {
     "Id": 8002,
@@ -121,7 +126,8 @@
     "DropScript": 0,
     "DropArg": [],
     "PowerSpeed": [],
-    "PowerSpeedVal": []
+    "PowerSpeedVal": [],
+    "SpellIds": []
   },
   {
     "Id": 1003,
@@ -130,7 +136,7 @@
     "Attrs": [
       [
         1002,
-        100
+        1
       ],
       [
         1001,
@@ -151,7 +157,10 @@
       5000
     ],
     "PowerSpeed": [],
-    "PowerSpeedVal": []
+    "PowerSpeedVal": [],
+    "SpellIds": [
+      1003
+    ]
   },
   {
     "Id": 1004,
@@ -160,7 +169,7 @@
     "Attrs": [
       [
         1002,
-        100
+        2
       ],
       [
         1001,
@@ -181,7 +190,10 @@
       10000
     ],
     "PowerSpeed": [],
-    "PowerSpeedVal": []
+    "PowerSpeedVal": [],
+    "SpellIds": [
+      1003
+    ]
   },
   {
     "Id": 1005,
@@ -190,7 +202,7 @@
     "Attrs": [
       [
         1002,
-        100
+        3
       ],
       [
         1001,
@@ -211,7 +223,10 @@
       10000
     ],
     "PowerSpeed": [],
-    "PowerSpeedVal": []
+    "PowerSpeedVal": [],
+    "SpellIds": [
+      1003
+    ]
   },
   {
     "Id": 7001,
@@ -233,6 +248,7 @@
       10000
     ],
     "PowerSpeed": [],
-    "PowerSpeedVal": []
+    "PowerSpeedVal": [],
+    "SpellIds": []
   }
 ]

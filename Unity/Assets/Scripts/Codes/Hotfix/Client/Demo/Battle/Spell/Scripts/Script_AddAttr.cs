@@ -1,46 +1,47 @@
 ﻿namespace ET.Client
 {
-    [Event(SceneType.Current)]
-    public class Evt_Spell_OnAdd_Script_AddAttr: AEvent<Scene, Evt_Spell_OnAdd>
+    [ObjectSystem]
+    public class Script_AddAttrAwakeSystem: AwakeSystem<Script_AddAttr, int>
     {
-        protected override async ETTask Run(Scene scene, Evt_Spell_OnAdd a)
+        protected override void Awake(Script_AddAttr self, int idx)
         {
-            var spell = a.Spell;
+        }
+    }
 
-
-            await ETTask.CompletedTask;
+    [ObjectSystem]
+    public class Script_AddAttrDestorySystem: DestroySystem<Script_AddAttr>
+    {
+        protected override void Destroy(Script_AddAttr self)
+        {
         }
     }
     
-    [Event(SceneType.Current)]
-    public class Evt_Spell_OnRemove_Script_AddAttr: AEvent<Scene, Evt_Spell_OnRemove>
-    {
-        protected override async ETTask Run(Scene scene, Evt_Spell_OnRemove a)
-        {
-            var spell = a.Spell;
-
-
-            await ETTask.CompletedTask;
-        }
-    }
-
-
+    
     [ObjectSystem]
     public class SpellCompaaonentDestorySystem: SpellAddSystem<Script_AddAttr>
     {
         protected override void SpellAdd(Script_AddAttr self)
         {
-            Log.Error(" Script_AddAttr Add !!!!");
+            Log.Console("vvvv");
+            var spell = self.GetParent<Spell>();
         }
     }
     
     
     [ObjectSystem]
-    public class SpellCompaaonentDestor1ySystem: SpellAddSystem<Script_Nromal1>
+    public class SpellCompaaonentDestor1ySystem: SpellAddSystem<Script_NormalBullet>
     {
-        protected override void SpellAdd(Script_Nromal1 self)
+        protected override void SpellAdd(Script_NormalBullet self)
         {
-            Log.Error(" Script_Nromal1 Add !!!!");
+            var spell = self.GetParent<Spell>();
+            
+            Log.Console("aaa");
         }
     }
+
+    public static class Script_AddAttrSystem
+    {
+       
+    }
+   
 }

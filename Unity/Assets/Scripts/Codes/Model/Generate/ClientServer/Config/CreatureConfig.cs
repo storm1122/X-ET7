@@ -24,6 +24,7 @@ public sealed partial class CreatureConfig: Bright.Config.BeanBase
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);DropArg = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); DropArg.Add(_e0);}}
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PowerSpeed = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); PowerSpeed.Add(_e0);}}
         {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);PowerSpeedVal = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); PowerSpeedVal.Add(_e0);}}
+        {int n0 = System.Math.Min(_buf.ReadSize(), _buf.Size);SpellIds = new System.Collections.Generic.List<int>(n0);for(var i0 = 0 ; i0 < n0 ; i0++) { int _e0;  _e0 = _buf.ReadInt(); SpellIds.Add(_e0);}}
         PostInit();
     }
 
@@ -61,6 +62,7 @@ public sealed partial class CreatureConfig: Bright.Config.BeanBase
     /// 能量移速加成数值
     /// </summary>
     public System.Collections.Generic.List<int> PowerSpeedVal { get; private set; }
+    public System.Collections.Generic.List<int> SpellIds { get; private set; }
 
     public const int __ID__ = -714052479;
     public override int GetTypeId() => __ID__;
@@ -85,6 +87,7 @@ public sealed partial class CreatureConfig: Bright.Config.BeanBase
         + "DropArg:" + Bright.Common.StringUtil.CollectionToString(DropArg) + ","
         + "PowerSpeed:" + Bright.Common.StringUtil.CollectionToString(PowerSpeed) + ","
         + "PowerSpeedVal:" + Bright.Common.StringUtil.CollectionToString(PowerSpeedVal) + ","
+        + "SpellIds:" + Bright.Common.StringUtil.CollectionToString(SpellIds) + ","
         + "}";
     }
     

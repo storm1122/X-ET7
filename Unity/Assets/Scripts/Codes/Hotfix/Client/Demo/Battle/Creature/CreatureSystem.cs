@@ -102,15 +102,12 @@ namespace ET.Client
         
         public static void AddSpell(this Creature self)
         {
-            if (self.CreatureType != CreatureType.Role)
-            {
-                return;
-            }
-
             var spellComponent = self.GetComponent<SpellComponent>();
-            Log.Error("add spell 1 ");
-            spellComponent.Add(1, self);
 
+            foreach (var spellConfigId in self.Config.SpellIds)
+            {
+                spellComponent.Add(spellConfigId, self);
+            }
         }
 
         public static void TestSpell1(this Creature self)
