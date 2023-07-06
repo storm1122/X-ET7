@@ -29,6 +29,8 @@ namespace ET.Client
                 self.AddComponent<MoveComponent>();
             }
 
+            self.AddComponent<SpellComponent>();
+
         }
     }
 
@@ -94,6 +96,19 @@ namespace ET.Client
             {
                 self.DomainScene().GetComponent<DropComponent>().Create(self.Config.DropArg[0], self.Position);
             }
+        }
+
+        
+        public static void AddSpell(this Creature self)
+        {
+            if (self.CreatureType != CreatureType.Role)
+            {
+                return;
+            }
+
+            var spellComponent = self.GetComponent<SpellComponent>();
+            spellComponent.Add(1, self);
+
         }
 
         public static void TestSpell1(this Creature self)

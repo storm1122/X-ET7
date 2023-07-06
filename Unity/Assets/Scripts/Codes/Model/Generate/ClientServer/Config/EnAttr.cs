@@ -31,6 +31,10 @@ namespace ET
         /// 能量
         /// </summary>
         Power = 10002,
+        /// <summary>
+        /// 经验
+        /// </summary>
+        Exp = 10003,
     }
 
 } 

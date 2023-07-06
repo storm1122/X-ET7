@@ -71,4 +71,29 @@ namespace ET.Client
           public Creature Creature;
           public int N;
       }
+      
+      public struct Evt_Spell_OnAdd
+      {
+          public Spell Spell;
+      }
+      
+      public struct Evt_Spell_OnCast
+      {
+          public Spell Spell;
+      }
+      
+      public struct Evt_Spell_OnLaunch
+      {
+          public Spell Spell;
+      }
+      
+      public struct Evt_Spell_OnRemove
+      {
+          public Spell Spell;
+      }
+
+      public struct Evt_Spell_OnInterval
+      {
+          public Spell Spell;
+      }
 }
