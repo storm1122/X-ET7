@@ -52,14 +52,14 @@ namespace ET.Client
                 if (script == DropConfigScript.Exp)
                 {
                     var role = CreatureHelper.GetRole(self.DomainScene());
-                    role.GetAttr()[AttrType.Exp] += arg[0];
-                    Log.Console($"经验:{role.GetAttr()[AttrType.Exp]}");
+                    role.GetAttrComponent()[AttrType.Exp] += arg[0];
+                    Log.Console($"经验:{role.GetAttrComponent()[AttrType.Exp]}");
                 }
                 else if (script == DropConfigScript.Power)
                 {
                     var role = CreatureHelper.GetRole(self.DomainScene());
-                    role.GetAttr()[AttrType.Power] += arg[0];
-                    Log.Console($"能量:{role.GetAttr()[AttrType.Power]}");
+                    role.GetAttrComponent()[AttrType.Power] += arg[0];
+                    Log.Console($"能量:{role.GetAttrComponent()[AttrType.Power]}");
                 }
                 idx++;
             }

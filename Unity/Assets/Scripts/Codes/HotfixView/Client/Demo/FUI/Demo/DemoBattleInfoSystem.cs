@@ -34,7 +34,7 @@ namespace ET.Client
 		public static void OnShow(this DemoBattleInfo self, Entity contextData = null)
 		{
 			var role = CreatureHelper.GetRole(self.DomainScene());
-			var max = role.GetAttr().GetAsLong(AttrType.MaxHp);
+			var max = role.GetAttrComponent().GetAsLong(AttrType.MaxHp);
 			self.FUIDemoBattleInfo.ProgressBar.max = max;
 			self.FUIDemoBattleInfo.ProgressBar.min = 0;
 			self.SetHpBar();
@@ -44,8 +44,8 @@ namespace ET.Client
 		{
 			var role = CreatureHelper.GetRole(self.DomainScene());
 
-			var max = role.GetAttr().GetAsLong(AttrType.MaxHp);
-			var cur = role.GetAttr().GetAsLong(AttrType.Hp);
+			var max = role.GetAttrComponent().GetAsLong(AttrType.MaxHp);
+			var cur = role.GetAttrComponent().GetAsLong(AttrType.Hp);
 
 
 			self.FUIDemoBattleInfo.ProgressBar.value = cur;

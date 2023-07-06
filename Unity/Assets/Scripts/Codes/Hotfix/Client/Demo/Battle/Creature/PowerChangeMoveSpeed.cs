@@ -35,7 +35,7 @@ namespace ET.Client
         public static long GetCastleSpeed(this Creature self)
         {
 
-            var rolePower = CreatureHelper.GetRole(self.DomainScene()).GetAttr().GetAsLong(AttrType.Power);
+            var rolePower = CreatureHelper.GetRole(self.DomainScene()).GetAttrComponent().GetAsLong(AttrType.Power);
             var powerAdd = 0;
             if (self.Config.PowerSpeed.Count == self.Config.PowerSpeedVal.Count)
             {
@@ -53,7 +53,7 @@ namespace ET.Client
                 Log.Error($"城堡的能量移速加成配置不正确，城堡ID：{self.ConfigId}");
             }
 
-            var moveSpeed = self.GetAttr().GetAsLong(AttrType.MoveSpeed) + powerAdd;
+            var moveSpeed = self.GetAttrComponent().GetAsLong(AttrType.MoveSpeed) + powerAdd;
 
             return moveSpeed;
         }

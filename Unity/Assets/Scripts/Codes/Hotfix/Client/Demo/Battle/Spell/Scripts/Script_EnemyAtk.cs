@@ -23,8 +23,13 @@
     {
         protected override void SpellAdd(Script_EnemyAtk self)
         {
-            var owner = self.GetParent<Spell>().Owner;
-            Log.Console($"owner:{owner.ConfigId} , {owner.Id}");
+            var spell = self.GetParent<Spell>();
+            
+            var owner = spell.Owner;
+
+            var arg = spell.GetArg(self.Idx);
+            
+            Log.Console($"Script_EnemyAtk owner:{owner.ConfigId} , {owner.Id} , atk:{arg[0]}");
         }
     }
 

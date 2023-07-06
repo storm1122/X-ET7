@@ -17,9 +17,7 @@ namespace ET.Client
             var attrComponent = self.AddComponent<AttrComponent>();
             foreach (var attr in self.Config.Attrs)
             {
-                int bas = (int)attr.Key * 10 + 1;
-                
-                attrComponent.Set(bas,attr.Value);
+                attrComponent.Set((int)attr.Key, attr.Value);
             }
 
             attrComponent[AttrType.Hp] = attrComponent[AttrType.MaxHp];
@@ -45,9 +43,28 @@ namespace ET.Client
     [FriendOfAttribute(typeof(ET.Client.Creature))]
     public static class CreatureSystem
     {
-        public static AttrComponent GetAttr(this Creature self)
+        public static AttrComponent GetAttrComponent(this Creature self)
         {
             return self.GetComponent<AttrComponent>();
+        }
+        public static long GetAttr(this Creature self, EnAttr key)
+        {
+            return self.GetAttr((int)key);
+        }
+        public static long GetAttr(this Creature self, int key)
+        {
+            var attr = self.GetComponent<AttrComponent>();
+            return attr[key];
+        }
+        public static void AddAttr(this Creature self, EnAttr key, long val)
+        {
+            var attr = self.GetComponent<AttrComponent>();
+            attr[(int)key] += val;
+        }
+        public static void AddAttr(this Creature self, int key, long val)
+        {
+            var attr = self.GetComponent<AttrComponent>();
+            attr[key] += val;
         }
 
         public static void TakeDamage(this Creature self, long dmg)
@@ -138,7 +155,7 @@ namespace ET.Client
             List<TSVector> list = new List<TSVector>();
             list.Add(self.Position);
             list.Add(targetPos);
-            self.GetComponent<MoveComponent>().MoveToAsync(list, self.GetAttr().GetAsLong(AttrType.MoveSpeed)).Coroutine();
+            self.GetComponent<MoveComponent>().MoveToAsync(list, self.GetAttrComponent().GetAsLong(AttrType.MoveSpeed)).Coroutine();
         }
 
         public static async ETTask MoveToTarget(this Creature self, Creature target)
@@ -146,7 +163,7 @@ namespace ET.Client
             List<TSVector> list = new List<TSVector>();
             list.Add(self.Position);
             list.Add(target.Position);
-            await self.GetComponent<MoveComponent>().MoveToAsync(list, self.GetAttr().GetAsLong(AttrType.MoveSpeed));
+            await self.GetComponent<MoveComponent>().MoveToAsync(list, self.GetAttrComponent().GetAsLong(AttrType.MoveSpeed));
         }
 
         public static void MoveStop(this Creature self)

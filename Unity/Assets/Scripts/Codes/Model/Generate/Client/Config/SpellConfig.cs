@@ -38,6 +38,9 @@ public sealed partial class SpellConfig: Bright.Config.BeanBase
     public string SpellType { get; private set; }
     public SpellKey[] Spellkey { get; private set; }
     public System.Collections.Generic.Dictionary<EnAttr, int>[] AddAttrArg { get; private set; }
+    /// <summary>
+    /// 这列不能空缺！！！
+    /// </summary>
     public System.Collections.Generic.List<int>[] Arg { get; private set; }
 
     public const int __ID__ = 1108056682;

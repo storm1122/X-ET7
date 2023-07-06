@@ -8,7 +8,8 @@ namespace ET.Client
     {
         public static FP GetAsFloat(this AttrComponent self, int attrType)
         {
-            return (FP)self.GetByKey(attrType) / 10000;
+            FP fp10000 = 10000;
+            return (FP)self.GetByKey(attrType) / fp10000;
         }
 
         public static int GetAsInt(this AttrComponent self, int attrType)
@@ -21,10 +22,10 @@ namespace ET.Client
             return self.GetByKey(attrType);
         }
 
-        public static void Set(this AttrComponent self, int nt, FP value)
-        {
-            self[nt] = (long)(value * 10000);
-        }
+        // public static void Set(this AttrComponent self, int nt, FP value)
+        // {
+        //     self[nt] = (long)(value * 10000);
+        // }
 
         public static void Set(this AttrComponent self, int nt, int value)
         {
@@ -70,6 +71,7 @@ namespace ET.Client
             self.AttrDic.TryGetValue(key, out value);
             return value;
         }
+        
 
         public static void Update(this AttrComponent self, int attrType, bool isPublicEvent)
         {
@@ -82,8 +84,20 @@ namespace ET.Client
 
             // 一个数值可能会多种情况影响，比如速度,加个buff可能增加速度绝对值100，也有些buff增加10%速度，所以一个值可以由5个值进行控制其最终结果
             // final = (((base + add) * (100 + pct) / 100) + finalAdd) * (100 + finalPct) / 100;
-            long result = (long)(((self.GetByKey(bas) + self.GetByKey(add)) * (100 + self.GetAsFloat(pct)) / 100f + self.GetByKey(finalAdd)) *
-                (100 + self.GetAsFloat(finalPct)) / 100f);
+
+            var baseVal = self.GetByKey(bas);
+            var addVal = self.GetByKey(add);
+            var pctVal = self.GetAsFloat(pct);
+            var finalAddVal = self.GetByKey(finalAdd);
+            var finalPctVal = self.GetAsFloat(finalPct);
+
+            
+            FP fp1 = 1;
+
+            FP fpResult = ((baseVal + addVal) * (fp1 + pctVal) + finalAddVal) * (fp1 + finalPctVal);
+            
+            long result = (long)fpResult;
+            
             self.Insert(final, result, isPublicEvent);
         }
     }

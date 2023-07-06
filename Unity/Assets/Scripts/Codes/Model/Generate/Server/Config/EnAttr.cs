@@ -12,29 +12,93 @@ namespace ET
     public enum EnAttr
     {
         /// <summary>
-        /// 最大血量
-        /// </summary>
-        MaxHp = 1001,
-        /// <summary>
-        /// 攻击
-        /// </summary>
-        Atk = 1002,
-        /// <summary>
-        /// 移动速度
-        /// </summary>
-        MoveSpeed = 1003,
-        /// <summary>
-        /// 半径
-        /// </summary>
-        Radius = 1004,
-        /// <summary>
         /// 能量
         /// </summary>
-        Power = 10002,
+        Power = 9002,
         /// <summary>
         /// 经验
         /// </summary>
-        Exp = 10003,
+        Exp = 9003,
+        /// <summary>
+        /// 基础最大血量
+        /// </summary>
+        MaxHpBase = 10011,
+        /// <summary>
+        /// 最大血量
+        /// </summary>
+        MaxHpAdd = 10012,
+        /// <summary>
+        /// 最大血量百分比
+        /// </summary>
+        MaxHpPct = 10013,
+        /// <summary>
+        /// 最大血量A
+        /// </summary>
+        MaxHpFinalAdd = 10014,
+        /// <summary>
+        /// 最大血量百分比A
+        /// </summary>
+        MaxHpFinalPct = 10015,
+        /// <summary>
+        /// 基础攻击
+        /// </summary>
+        AtkBase = 10021,
+        /// <summary>
+        /// 攻击
+        /// </summary>
+        AtkAdd = 10022,
+        /// <summary>
+        /// 攻击百分比
+        /// </summary>
+        AtkPct = 10023,
+        /// <summary>
+        /// 攻击A
+        /// </summary>
+        AtkFinalAdd = 10024,
+        /// <summary>
+        /// 攻击百分比A
+        /// </summary>
+        AtkFinalPct = 10025,
+        /// <summary>
+        /// 基础移速
+        /// </summary>
+        MoveSpeedBase = 10031,
+        /// <summary>
+        /// 移速
+        /// </summary>
+        MoveSpeedAdd = 10032,
+        /// <summary>
+        /// 移速百分比
+        /// </summary>
+        MoveSpeedPct = 10033,
+        /// <summary>
+        /// 移速A
+        /// </summary>
+        MoveSpeedFinalAdd = 10034,
+        /// <summary>
+        /// 移速百分比A
+        /// </summary>
+        MoveSpeedFinalPct = 10035,
+        /// <summary>
+        /// 基础半径
+        /// </summary>
+        RadiusBase = 10041,
+        /// <summary>
+        /// 半径
+        /// </summary>
+        RadiusAdd = 10042,
+        /// <summary>
+        /// 半径百分比
+        /// </summary>
+        RadiusPct = 10043,
+        /// <summary>
+        /// 半径A
+        /// </summary>
+        RadiusFinalAdd = 10044,
+        /// <summary>
+        /// 半径百分比A
+        /// </summary>
+        RadiusFinalPct = 10045,
     }
 
 } 
