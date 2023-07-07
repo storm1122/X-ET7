@@ -6,5 +6,8 @@
       <ProgressBar value="100" max="100"/>
     </component>
     <component id="n4_i0nf" name="BtnExit" src="i0nf46" fileName="Common/NormalBtn1.xml" xy="1643,194"/>
+    <text id="n5_gm99" name="txtDebug" xy="933,558" size="975,508" fontSize="32" align="right" vAlign="bottom" autoSize="none" text="">
+      <relation target="" sidePair="right-right,bottom-bottom"/>
+    </text>
   </displayList>
 </component>

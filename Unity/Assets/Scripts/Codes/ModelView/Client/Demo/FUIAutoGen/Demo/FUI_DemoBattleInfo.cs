@@ -9,6 +9,7 @@ namespace ET.Client.Demo
 	{
 		public ET.Client.Demo.FUI_ProgressBar1 ProgressBar;
 		public ET.Client.Demo.FUI_NormalBtn1 BtnExit;
+		public GTextField txtDebug;
 		public const string URL = "ui://2k63u5d6i0nf4a";
 
 		public static FUI_DemoBattleInfo CreateInstance()
@@ -22,6 +23,7 @@ namespace ET.Client.Demo
 
 			ProgressBar = (ET.Client.Demo.FUI_ProgressBar1)GetChildAt(0);
 			BtnExit = (ET.Client.Demo.FUI_NormalBtn1)GetChildAt(1);
+			txtDebug = (GTextField)GetChildAt(2);
 		}
 	}
 }

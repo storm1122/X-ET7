@@ -18,13 +18,22 @@
         {
         }
     }
+    
+    [ObjectSystem]
+    public class SpellUpdateSystem: UpdateSystem<Spell>
+    {
+        protected override void Update(Spell self)
+        {
+            self.Cast();
+        }
+    }
 
     public static class SpellSystem
     {
 
         public static void Cast(this Spell self)
         {
-            
+            self.OnLaunch();
         }
         
         public static void OnAdd(this Spell self, Creature owner)
@@ -47,9 +56,25 @@
         
         private static void OnLaunch(this Spell self)
         {
+            EventSystem.Instance.SpellLaunch(self);
+        }
+
+        public static void OnSpellEnd(this Spell self)
+        {
             
         }
 
+        public static Damage CreateDamage(this Spell self)
+        {
+            var damageComponent = self.DomainScene().GetComponent<DamageComponent>();
+
+            var dmg = damageComponent.AddChild<Damage>();
+
+            dmg.Owner = self.Owner;
+
+            return dmg;
+        }
+        
         private static void OnInterval(this Spell self)
         {
             

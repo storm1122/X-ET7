@@ -2,9 +2,9 @@
 
 namespace ET.Client
 {
-  
-    
-    public class ViewComponentUpdateSystem: UpdateSystem<CreatureViewComponent>
+    [FriendOfAttribute(typeof(ET.Client.SpellComponent))]
+    [FriendOfAttribute(typeof(ET.Client.Spell))]
+    public class ViewComponentUpdateSystem : UpdateSystem<CreatureViewComponent>
     {
         protected override void Update(CreatureViewComponent self)
         {
@@ -16,14 +16,37 @@ namespace ET.Client
             if (Input.GetKeyUp(KeyCode.R))
             {
                 var role = CreatureHelper.GetCastle(self.DomainScene());
-                
+
                 var spellComponent = role.GetComponent<SpellComponent>();
                 Log.Error("add spell 2 ");
                 spellComponent.Add(2, role);
             }
+
+            var panelLogic = self.DomainScene().GetComponent<FUIComponent>()?.GetPanelLogic<DemoBattleInfo>();
+            if (panelLogic != null)
+            {
+                var label = panelLogic.FUIDemoBattleInfo.txtDebug;
+                label.text = "";
+
+                var enemys = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
+
+                if (enemys != null)
+                {
+                    foreach (var enemy in enemys)
+                    {
+                        var spell = enemy.GetComponent<SpellComponent>().multiMap.GetOne(1003);
+                        var str = $"cd:{spell.Cd} , nextCd:{spell.NextCd} , wait:{spell.NextCd - spell.Cd}\n";
+                        label.text += str;
+                    }
+                }
+
+              
+
+            }
+          
         }
     }
-    
+
     public class RoleOperator: UpdateSystem<CreatureViewComponent>
     {
         protected override void Update(CreatureViewComponent self)

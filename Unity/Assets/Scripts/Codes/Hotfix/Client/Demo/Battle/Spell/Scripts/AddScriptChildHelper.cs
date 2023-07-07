@@ -32,7 +32,7 @@ namespace ET.Client
         {
             if (idx >= self.Config.Arg.Length)
             {
-                Log.Error($"获取参数错误，技能id:{self.ConfigId}, idx:{idx}");
+                Log.Error($"获取参数错误，spellId:{self.ConfigId}, idx:{idx}");
                 return new List<int>();
             }
             List<int> args = self.Config.Arg[idx];

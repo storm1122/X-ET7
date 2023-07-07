@@ -20,9 +20,35 @@
 
     [ObjectSystem]
     [FriendOfAttribute(typeof(ET.Client.Creature))]
+    [FriendOfAttribute(typeof(ET.Client.Spell))]
     public class Script_AddAttrSpellAddSystem : SpellAddSystem<Script_AddAttr>
     {
         protected override void SpellAdd(Script_AddAttr self)
+        {
+            var spell = self.GetParent<Spell>();
+
+            var owner = spell.Owner;
+
+            if (self.Idx >= spell.Config.AddAttrArg.Length)
+            {
+                Log.Error($"spell:{spell.ConfigId}, Script_AddAttr ERROR, AddAttrArg idx:{self.Idx}");
+                return;
+            }
+
+            var arg = spell.Config.AddAttrArg[self.Idx];
+
+            foreach (var data in arg)
+            {
+                owner.AddAttr(data.Key, data.Value);
+            }
+        }
+    }
+
+    [ObjectSystem]
+    [FriendOfAttribute(typeof(ET.Client.Creature))]
+    public class Script_AddAttrSpellRemoveSystem : SpellRemoveSystem<Script_AddAttr>
+    {
+        protected override void SpellRemove(Script_AddAttr self)
         {
             var spell = self.GetParent<Spell>();
 
@@ -32,14 +58,10 @@
 
             foreach (var data in arg)
             {
-                
-                Log.Console($" Script_AddAttr 111  owner:{owner.ConfigId} , {owner.Id} , attr:Atk = {owner.GetAttrComponent().GetAsLong(AttrType.Atk)}");
-                owner.AddAttr(data.Key, data.Value);
-                Log.Console($" Script_AddAttr 222  owner:{owner.ConfigId} , {owner.Id} , attr:Atk = {owner.GetAttrComponent().GetAsLong(AttrType.Atk)}");
+                owner.AddAttr(data.Key, -data.Value);
             }
         }
     }
-
 
 
     public static class Script_AddAttrSystem

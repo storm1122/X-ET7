@@ -45,7 +45,8 @@ namespace ET.Client
             currentScene.AddComponent<AttrWatcherComponent>();
             currentScene.AddComponent<BattleRandom,int>(1);
             currentScene.AddComponent<DropComponent>();
-
+            currentScene.AddComponent<DamageComponent>();
+            
             // 设置关卡
             // 参数1：关卡id， 参数2：从哪个落脚点开始，默认为0， SL的话，可能会从后面的序号开始
             var footHoldComponent =

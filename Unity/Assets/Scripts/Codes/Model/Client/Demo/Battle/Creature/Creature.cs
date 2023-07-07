@@ -17,7 +17,7 @@ namespace ET.Client
         public int ConfigId;
 
         public Camp Camp;
-
+        
         private TSVector position;
 
         public CreatureType CreatureType;

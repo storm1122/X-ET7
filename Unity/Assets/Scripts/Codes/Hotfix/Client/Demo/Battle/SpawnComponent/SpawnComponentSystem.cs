@@ -103,7 +103,7 @@ namespace ET.Client
 
                     if (creature.CreatureType != CreatureType.Treasure)
                     {
-                        creature.AddComponent<AIComponent, int>(1);
+                        creature.AddComponent<AIComponent, int>(2);
                     }
 
                     // todo 追踪组件

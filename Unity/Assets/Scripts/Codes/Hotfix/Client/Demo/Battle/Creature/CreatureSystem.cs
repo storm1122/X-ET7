@@ -41,6 +41,7 @@ namespace ET.Client
         }
     }
     [FriendOfAttribute(typeof(ET.Client.Creature))]
+    [FriendOfAttribute(typeof(ET.Client.Damage))]
     public static class CreatureSystem
     {
         public static AttrComponent GetAttrComponent(this Creature self)
@@ -67,6 +68,38 @@ namespace ET.Client
             attr[key] += val;
         }
 
+
+        public static void TakeDamage(this Creature self, Damage damage)
+        {
+            if (!self.Alive)
+            {
+                return;
+            }
+            
+            var attr = self.GetComponent<AttrComponent>();
+
+            var hp = attr[AttrType.Hp];
+
+            var owner = damage.Owner;
+
+            var ownerAttr = owner.GetComponent<AttrComponent>();
+
+            var minusHp = ownerAttr[AttrType.Atk] * damage.DmgPct;
+
+            minusHp = 1;
+
+            attr[AttrType.Hp] = math.max(0, hp -= minusHp);
+
+            EventSystem.Instance.Publish(self.DomainScene(), new Evt_CreatureTakeDamage { Creature = self, Damage = minusHp });
+            
+            damage.Dispose();
+
+            if (attr[AttrType.Hp] <= 0)
+            {
+                self.Dead();
+            }
+        }
+
         public static void TakeDamage(this Creature self, long dmg)
         {
             var attr = self.GetComponent<AttrComponent>();
@@ -88,9 +121,9 @@ namespace ET.Client
         private static void Dead(this Creature self)
         {
             self.DropScript1();
-            
+
             self.GetParent<CreatureComponent>().CreatureDead(self);
-    
+
         }
 
         public static void DropScript1(this Creature self)
@@ -109,14 +142,14 @@ namespace ET.Client
             var r = self.Config.DropArg[1];
 
             var r10000 = self.DomainScene().GetComponent<BattleRandom>().Random10000();
-            
+
             if (r > r10000)
             {
                 self.DomainScene().GetComponent<DropComponent>().Create(self.Config.DropArg[0], self.Position);
             }
         }
 
-        
+
         public static void AddSpell(this Creature self)
         {
             var spellComponent = self.GetComponent<SpellComponent>();
@@ -126,6 +159,7 @@ namespace ET.Client
                 spellComponent.Add(spellConfigId, self);
             }
         }
+
 
         public static void TestSpell1(this Creature self)
         {
@@ -140,6 +174,13 @@ namespace ET.Client
 
         }
 
+        public static FP Distance(this Creature self, Creature target)
+        {
+            var r = self.GetAttrComponent().GetAsFloat(AttrType.Radius) + target.GetAttrComponent().GetAsFloat(AttrType.Radius);
+            var distance = TSVector.Distance(self.Position, target.Position);
+            Log.Console($"r:{r} , dis:{distance}");
+            return r + distance;
+        }
 
         public static void TestSpell2(this Creature self, Creature target)
         {
