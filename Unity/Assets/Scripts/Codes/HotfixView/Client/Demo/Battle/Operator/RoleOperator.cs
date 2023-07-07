@@ -22,27 +22,27 @@ namespace ET.Client
                 spellComponent.Add(2, role);
             }
 
-            var panelLogic = self.DomainScene().GetComponent<FUIComponent>()?.GetPanelLogic<DemoBattleInfo>();
-            if (panelLogic != null)
-            {
-                var label = panelLogic.FUIDemoBattleInfo.txtDebug;
-                label.text = "";
-
-                var enemys = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
-
-                if (enemys != null)
-                {
-                    foreach (var enemy in enemys)
-                    {
-                        var spell = enemy.GetComponent<SpellComponent>().multiMap.GetOne(1003);
-                        var str = $"cd:{spell.Cd} , nextCd:{spell.NextCd} , wait:{spell.NextCd - spell.Cd}\n";
-                        label.text += str;
-                    }
-                }
-
-              
-
-            }
+            // var panelLogic = self.DomainScene().GetComponent<FUIComponent>()?.GetPanelLogic<DemoBattleInfo>();
+            // if (panelLogic != null)
+            // {
+            //     var label = panelLogic.FUIDemoBattleInfo.txtDebug;
+            //     label.text = "";
+            //
+            //     var enemys = CreatureHelper.GetCreature(self.DomainScene(), Camp.B);
+            //
+            //     if (enemys != null)
+            //     {
+            //         foreach (var enemy in enemys)
+            //         {
+            //             var spell = enemy.GetComponent<SpellComponent>().multiMap.GetOne(1003);
+            //             if (spell != null)
+            //             {
+            //                 var str = $"cd:{spell.Cd} , nextCd:{spell.NextCd} , wait:{spell.NextCd - spell.Cd}\n";
+            //                 label.text += str;
+            //             }
+            //         }
+            //     }
+            // }
           
         }
     }

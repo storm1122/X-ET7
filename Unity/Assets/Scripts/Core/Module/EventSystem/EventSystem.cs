@@ -703,6 +703,7 @@ namespace ET
 
                 if (component.Parent.Id != componentParent.Id)
                 {
+                    queue.Enqueue(instanceId);
                     continue;
                 }
 

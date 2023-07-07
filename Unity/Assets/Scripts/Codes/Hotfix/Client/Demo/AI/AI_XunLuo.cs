@@ -24,7 +24,9 @@ namespace ET.Client
 
             var creature = aiComponent.GetParent<Creature>();
 
-            if (TSVector.Distance(target.Position, creature.Position) > ConstValue.AtkRange)
+            
+            
+            if (creature.Distance(target) > FP.Zero)
             {
                 return 0;
             }

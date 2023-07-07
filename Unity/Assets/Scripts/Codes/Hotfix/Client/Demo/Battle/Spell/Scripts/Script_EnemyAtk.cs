@@ -26,7 +26,6 @@ namespace ET.Client
     {
         protected override void SpellLaunch(Script_EnemyAtk self)
         {
-            Log.Console($"Script_EnemyAtk Launch:");
             var spell = self.GetParent<Spell>();
 
             var owner = spell.Owner;
@@ -44,14 +43,14 @@ namespace ET.Client
 
             // 检查参数
             var dmgPct = arg[0];
-            var distance = arg[1];
+            var distance = arg[1] * FP.EN4;
 
             var _dis = owner.Distance(target);
             
-            // if (_dis < FP.One)
-            // {
-            //     return;
-            // }
+            if (_dis > distance)
+            {
+                return;
+            }
             
             Log.Console($"Script_EnemyAtk owner:{owner.ConfigId} , {owner.Id} , atk:{arg[0]}");
 

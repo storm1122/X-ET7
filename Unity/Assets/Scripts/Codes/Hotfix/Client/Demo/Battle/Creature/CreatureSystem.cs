@@ -84,9 +84,9 @@ namespace ET.Client
 
             var ownerAttr = owner.GetComponent<AttrComponent>();
 
-            var minusHp = ownerAttr[AttrType.Atk] * damage.DmgPct;
+            var fpminusHp = ownerAttr[AttrType.Atk] * damage.DmgPct * FP.EN4;
 
-            minusHp = 1;
+            var minusHp = (long)fpminusHp;
 
             attr[AttrType.Hp] = math.max(0, hp -= minusHp);
 
@@ -178,8 +178,7 @@ namespace ET.Client
         {
             var r = self.GetAttrComponent().GetAsFloat(AttrType.Radius) + target.GetAttrComponent().GetAsFloat(AttrType.Radius);
             var distance = TSVector.Distance(self.Position, target.Position);
-            Log.Console($"r:{r} , dis:{distance}");
-            return r + distance;
+            return distance - r;
         }
 
         public static void TestSpell2(this Creature self, Creature target)
